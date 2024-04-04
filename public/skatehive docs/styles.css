@@ -41,8 +41,13 @@ header {
   color: #4d4e53;
   border-top: 1px solid;
   list-style: none;
-  
   width: 100%;
+}
+#navbar li:hover{
+  background-color: antiquewhite;
+}
+#navbar li:hover:last-of-type{
+  background-image: linear-gradient(antiquewhite, white)
 }
 #navbar a {
   display: block;

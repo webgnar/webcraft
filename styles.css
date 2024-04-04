@@ -1,8 +1,8 @@
 body{
     background-color: #FAEBD7;
     background-image: 
-        url(image/stage_curtain2.png),
-       url(image/brick.png);
+        url(img/comedy/stage_curtain2.png),
+       url(img/comedy/brick.png);
 
     background-size: cover;
     background-attachment: fixed;

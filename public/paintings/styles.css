@@ -1,0 +1,421 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    min-width: 227px;
+}
+
+
+
+body{
+    margin: 0;
+}
+
+header{
+  
+    font-size: 2.5em;
+    text-align: right;
+    width: 700px;
+    height: 100px;
+    background-image: linear-gradient(red, blue, orange);
+    margin: 0 auto;
+}
+
+
+#paintings_container{
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 25px
+
+}
+.frame{
+    background-color: black;
+    width: 30%;
+    height: 300px;
+    border: 1px solid yellow
+}
+
+.painting{
+    padding: 10px;
+    background-color: white;
+    width:90%;
+    height: 90%;
+    border: 10px solid brown;
+    margin:  auto;
+    margin-top: 15px;   
+}
+.one{
+    background-color: lightblue;
+    height: 30%;
+}
+.two{
+background-color: lightyellow;
+height: 30%;
+}
+.three{
+    background-color: lightpink;
+    height: 30%;
+
+}
+.four{
+background-color: darkblue;
+height: 10%;
+
+}
+
+.one1{
+    background-color: lavender;
+    height: 20%;
+}
+.two1{
+background-image:linear-gradient(lightcoral 20%,  yellow 30%, rgb(163, 221, 255)) ;
+height: 40%;
+}
+.three1{
+    background-color: rgb(255, 218, 185);
+    height: 20%;
+
+}
+.four1{
+background-color: cyan;
+height: 20%;
+
+}
+
+.one2{
+    background-color: rgb(111, 111, 93);
+    height: 20%;
+}
+.two2{
+background-color: rgb(224, 255, 254);
+height: 40%;
+}
+.three2{
+    background-color: lightpink;
+    height: 20%;
+
+}
+.four2{
+background-color: rgb(91, 5, 5);
+height: 20%;
+
+}
+
+.bigpainting_container{
+display: flex;
+flex-direction: row;
+justify-content: center;
+margin-top: 30px;
+}
+
+.big_frame{
+ background: black;
+padding: 20px;
+margin: 0 auto;
+width: 80%;
+}
+
+.bigpainting{
+    width: 100%;
+    height: 400px;
+    background-color: red;
+    display: flex;
+    margin: 0 auto;
+}
+
+.rect1{
+background-color: yellow;
+width: calc(100% / 3);
+display: flex;
+padding: 5px;
+flex-direction: row;
+}
+
+.rect2{
+    background-color: cyan;
+    width: calc(100% / 3);
+    display: flex;
+    padding: 5px;
+    flex-direction: row;
+}
+
+.rect3{
+    background-color: orangered;
+    width: calc(100% / 3);
+    display: flex;
+    padding: 5px;
+    flex-direction: row;
+}
+
+.square1{
+background-color: darkblue;
+width: 10px;
+}
+.square2{
+    background-color: darkorange;
+    width: 30%;
+}
+.square3{
+    background-image: linear-gradient(orange, red, tan);
+    width: 30%;
+}
+.square4{
+    background-color: white;
+    width: 20%;
+    margin-left: 10px;
+}
+
+.square1b{
+    background-color: lightgreen;
+    width: 30%;
+    }
+.square2b{
+    background-color: rgb(226, 226, 151);
+    width: 20%;
+    border-right: 3px solid brown;
+    }
+.square3b{
+    background-color: rgb(68, 255, 0);
+    width: 20%;
+    margin-left: 15%;
+    border-left: 6px solid gray;
+    }
+.square4b{
+    background-color: rgb(6, 147, 254);
+    width: 20%;
+    margin-left: 10%;
+    border-left: 8px solid pink;
+    }
+
+.square1c{
+    background-image: linear-gradient(lightblue 5%,rgb(74, 0, 74) 30%, rgb(74, 0, 74) 70%, red);
+    width: 15%;
+    }
+.square2c{
+    background-image: linear-gradient(rgb(0, 255, 217), rgb(214, 85, 0), white);
+    width: 30%;
+    border-right: 5px solid red
+    }
+.square3c{
+    background-color: rgb(26, 79, 7);
+    width: 15%;
+    border-left: 10px soild blue;
+    }
+.square4c{
+    background-color: rgb(40, 0, 67);
+    width: 35%;
+    margin-left: 10%;
+    border-left: 8px solid pink;
+    border-right: 10px solid lightgreen;
+    }
+    
+
+.tilepainting_container{
+margin-top: 50px;
+height: 500px;
+width: 80%;
+margin: 0 auto;
+margin-top: 30px;
+margin-bottom: 30px;
+}
+.tilepainting_frame{
+    background-color: black;
+    width: 100%;
+    height: 700px;
+    margin: 0 auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+.tilepainting_canvas{
+background-color: white;
+width: 90%;
+height: 100%;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: repeat(2, 1fr);
+}
+
+.tilepainting_cell{
+    border: 1px black;
+    background-color: red;
+}
+
+.cellone{
+    border: 1px solid rgb(253, 131, 255);
+    background-color: rgb(48, 158, 145);
+    display: block;
+}
+
+.celltwo{
+    border: 1px black;
+    background-color: rgb(255, 84, 124);
+}
+.cellthree{
+    border: 1px solid rgb(42, 255, 227);
+    background-color: rgb(2, 64, 85);
+    flex-direction: row;
+  flex-wrap: wrap;
+}
+.cellfour{
+    background-color: rgb(222, 151, 254);
+}
+.cellfive{
+    border: 1px solid rgb(58, 10, 59);
+    background-color: rgb(255, 249, 79));
+}
+.cellsix{
+    background-color: brown;
+}
+
+.circle{
+    background-color: rgb(203, 197, 197);
+    width: 100%;
+    height: 25%;
+    border-radius: 50%;
+}
+
+.circle1{
+    background-color: rgb(41, 106, 196);
+    width: 100%;
+    height: 25%;
+    border: 5px solid red;
+}
+
+.circle3{
+    background-color: rgb(243, 136, 13);
+    width: 100%;
+    height: 25%;
+    border-radius: 50%;
+}
+
+.circle4{
+    background-color: rgb(57, 255, 133);
+    width: 100%;
+    height: 25%;
+    border: 5px solid 
+}
+
+.circlea{
+    background-color: rgb(251, 21, 255);
+    width: 100%;
+    height: 25%;
+    border-radius: 50%;
+    border: 5px solid rgb(128, 240, 162);
+}
+
+.circle1a{
+    background-color: rgb(90, 17, 17);
+    width: 100%;
+    height: 25%;
+    border: 5px solid rgb(231, 239, 0)
+}
+
+.circle3a{
+    background-color: rgb(243, 243, 13);
+    width: 100%;
+    height: 25%;
+    border-radius: 50%;
+    border: 5px solid orange;
+}
+
+.circle4a{
+    background-color: rgb(106, 106, 214);
+    width: 100%;
+    height: 25%;
+    border: 10px solid rgb(8, 230, 255);
+}
+
+.circleb{
+    background-color: rgb(251, 21, 255);
+    width: 100%;
+    height: 25%;
+    border: 5px solid rgb(128, 240, 162);
+}
+
+.circle1b{
+    background-color: rgb(126, 106, 106);
+    width: 100%;
+    height: 25%;
+    border: 5px solid tan;
+    border-radius: 50%;
+    
+}
+
+.circle3b{
+    background-color: rgb(243, 243, 13);
+    width: 100%;
+    height: 25%;
+    border: 20px solid orange;
+}
+
+.circle4b{
+    background-color: rgb(106, 106, 214);
+    width: 100%;
+    height: 25%;
+    border-radius: 50%;
+}
+
+.circlec{
+    background-color: rgb(251, 21, 255);
+    width: 50%;
+    height: 25%;
+    border: 5px solid rgb(128, 240, 162);
+}
+
+.circle1c{
+    background-color: rgb(126, 106, 106);
+    width: 100%;
+    height: 25%;
+    border: 5px solid tan;
+    
+}
+
+.circle3c{
+    background-color: rgb(243, 243, 13);
+    width: 100%;
+    height: 25%;
+    border-radius: 50%;
+    border: 10px solid orange;
+}
+
+.circle4c{
+    background-color: rgb(106, 106, 214);
+    width: 100%;
+    height: 25%;
+}
+
+
+
+@media only screen and (max-width:700px){
+    header{
+  
+        font-size: 1.5em;
+        text-align: center;
+        width: 400px;
+        height: 100px;
+        background-image: linear-gradient(red 25%, blue, orange 75%);
+        margin: 0 auto;
+        border-radius: 50%;
+    }
+
+}
+
+@media only screen and (max-width:400px){
+    header{
+  
+        font-size: 1.0em;
+        text-align: center;
+        color: beige;
+        text-shadow: 1px 11px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+        width: 200px;
+        height: 100px;
+        background-image: linear-gradient(red 25%, blue, orange 75%);
+        margin: 0 auto;
+        border-radius: 50%;
+    }
+
+   
+}
