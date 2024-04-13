@@ -5,14 +5,11 @@ html{
     min-width: 227px;
 }
 
-
-
 body{
     margin: 0;
 }
 
 header{
-  
     font-size: 2.5em;
     text-align: right;
     width: 700px;
@@ -196,19 +193,18 @@ width: 10px;
 .square2c{
     background-image: linear-gradient(rgb(0, 255, 217), rgb(214, 85, 0), white);
     width: 30%;
-    border-right: 5px solid red
+    border-right: 5px solid red;
     }
 .square3c{
     background-color: rgb(26, 79, 7);
     width: 15%;
-    border-left: 10px soild blue;
+    
     }
 .square4c{
     background-color: rgb(40, 0, 67);
     width: 35%;
     margin-left: 10%;
-    border-left: 8px solid pink;
-    border-right: 10px solid lightgreen;
+
     }
     
 
@@ -229,45 +225,44 @@ margin-bottom: 30px;
     padding-bottom: 5%;
 }
 .tilepainting_canvas{
-background-color: white;
-width: 90%;
-height: 100%;
-margin: 0 auto;
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-template-rows: repeat(2, 1fr);
+    background-color: white;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 }
 
 .tilepainting_cell{
-    border: 1px black;
     background-color: red;
 }
 
 .cellone{
-    border: 1px solid rgb(253, 131, 255);
     background-color: rgb(48, 158, 145);
-    display: block;
+    
 }
 
 .celltwo{
-    border: 1px black;
     background-color: rgb(255, 84, 124);
 }
 .cellthree{
-    border: 1px solid rgb(42, 255, 227);
     background-color: rgb(2, 64, 85);
-    flex-direction: row;
-  flex-wrap: wrap;
+}
+.cell_hidden1{
+    display: none;
 }
 .cellfour{
     background-color: rgb(222, 151, 254);
 }
 .cellfive{
-    border: 1px solid rgb(58, 10, 59);
-    background-color: rgb(255, 249, 79));
+    background-color: rgb(255, 249, 79);
 }
 .cellsix{
     background-color: brown;
+}
+.cell_hidden2{
+    display: none;
 }
 
 .circle{
@@ -284,18 +279,18 @@ grid-template-rows: repeat(2, 1fr);
     border: 5px solid red;
 }
 
-.circle3{
+.circle2{
     background-color: rgb(243, 136, 13);
     width: 100%;
     height: 25%;
     border-radius: 50%;
 }
 
-.circle4{
+.circle3{
     background-color: rgb(57, 255, 133);
     width: 100%;
     height: 25%;
-    border: 5px solid 
+    border: 5px solid purple;
 }
 
 .circlea{
@@ -306,14 +301,14 @@ grid-template-rows: repeat(2, 1fr);
     border: 5px solid rgb(128, 240, 162);
 }
 
-.circle1a{
+.circlea1{
     background-color: rgb(90, 17, 17);
     width: 100%;
     height: 25%;
     border: 5px solid rgb(231, 239, 0)
 }
 
-.circle3a{
+.circlea2{
     background-color: rgb(243, 243, 13);
     width: 100%;
     height: 25%;
@@ -321,7 +316,7 @@ grid-template-rows: repeat(2, 1fr);
     border: 5px solid orange;
 }
 
-.circle4a{
+.circlea3{
     background-color: rgb(106, 106, 214);
     width: 100%;
     height: 25%;
@@ -335,7 +330,7 @@ grid-template-rows: repeat(2, 1fr);
     border: 5px solid rgb(128, 240, 162);
 }
 
-.circle1b{
+.circleb1{
     background-color: rgb(126, 106, 106);
     width: 100%;
     height: 25%;
@@ -344,14 +339,14 @@ grid-template-rows: repeat(2, 1fr);
     
 }
 
-.circle3b{
+.circleb2{
     background-color: rgb(243, 243, 13);
     width: 100%;
     height: 25%;
     border: 20px solid orange;
 }
 
-.circle4b{
+.circleb3{
     background-color: rgb(106, 106, 214);
     width: 100%;
     height: 25%;
@@ -359,21 +354,21 @@ grid-template-rows: repeat(2, 1fr);
 }
 
 .circlec{
-    background-color: rgb(251, 21, 255);
-    width: 50%;
+    background-color: rgb(18, 18, 135);
+    width: 100%;
     height: 25%;
-    border: 5px solid rgb(128, 240, 162);
+    border: 5px solid rgb(240, 128, 210);
+    border-radius: 50%;
 }
 
-.circle1c{
-    background-color: rgb(126, 106, 106);
+.circlec1{
+    background-image: linear-gradient(red, blue, green);
     width: 100%;
     height: 25%;
     border: 5px solid tan;
-    
 }
 
-.circle3c{
+.circlec2{
     background-color: rgb(243, 243, 13);
     width: 100%;
     height: 25%;
@@ -381,11 +376,65 @@ grid-template-rows: repeat(2, 1fr);
     border: 10px solid orange;
 }
 
-.circle4c{
+.circlec3{
     background-color: rgb(106, 106, 214);
     width: 100%;
     height: 25%;
+    border: 5px solid red;
 }
+
+.circled{
+background-color: blue;
+width: 100%;
+height: 25%;
+border: 10px solid pink
+}
+.circled1{
+    background-color: black;
+    width: 100%;
+height: 25%;
+border-radius: 50%;
+}
+.circled2{
+    width: 100%;
+height: 25%;
+background-color: rgb(0, 255, 200);
+border: 5px solid purple
+}
+.circled3{
+    width: 100%;
+height: 25%;
+background-color: rgb(15, 74, 74);
+border-radius: 50%;
+}
+
+.circlee{
+    width: 100%;
+height: 25%;
+background-color: aliceblue;
+border-radius: 50%;
+border: 5px solid green;
+}
+.circlee1{
+    width: 100%;
+height: 25%;
+background-color: rgb(103, 179, 153);
+border: 10px solid orange
+}
+.circlee2{
+    width: 100%;
+height: 25%;
+border-radius: 50%;
+background-color: bisque;
+border: 10px solid blue
+}
+.circlee3{
+    width: 100%;
+height: 25%;
+background-color: rgb(0, 188, 251);
+border: 5px solid gray
+}
+
 
 
 
@@ -415,6 +464,16 @@ grid-template-rows: repeat(2, 1fr);
         background-image: linear-gradient(red 25%, blue, orange 75%);
         margin: 0 auto;
         border-radius: 50%;
+    }
+
+
+    @media only screen and (min-width: 700px){
+        .tilepainting_canvas{
+         
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
+      
     }
 
    
