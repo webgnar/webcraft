@@ -29,7 +29,8 @@ body {
       transform: scale(2);
     }
   }
-
+  
+  
  
   #text {
     background-color: #0a0a23;
@@ -104,8 +105,6 @@ body {
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     animation-duration: 10s;
-
-    
     font-size: 1.6em;
     display: flex;
     justify-content: space-around;
@@ -113,7 +112,7 @@ body {
     font-weight: 400;
     font-style: normal;
     max-height: 200px;
-    cursor:copy;
+    cursor:cell;
   }
 
   @property --c {
@@ -177,19 +176,24 @@ body {
   }
  
  .stat span{
-    cursor:pointer;
+    cursor:ne-resize;
+ }
+
+ .material-symbols-outlined{
+  vertical-align: middle;
  }
 
  #radio{
     margin: 5px;
     display: flex;
-    
     background-image: url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23swXdGz84t22ApxFSDH2bCEgtm8gT5VCXiBQUc6S6uLR1fR2rrHevE5n5hiDFB96fwuM.gif');
     background-size: contain; /* Adjust the size of the background image */
     background-repeat: repeat; 
+    justify-content: space-between;
     padding: 5px;
     animation: radiodiv 2s ease-in-out 1s infinite;
     animation-direction: alternate;
+    
  }
  @keyframes radiodiv{
     from {
@@ -205,7 +209,7 @@ body {
     font-style: normal;
     background-color: black;
     color: white;
-    animation: radiotext 0.5s ease-in-out 1s infinite;
+    animation: radiotext var(--animation-duration, 2s) ease-in-out 1s infinite;
  }
  @keyframes radiotext{
     0%{
@@ -233,8 +237,31 @@ body {
 }
 
 .slider {
-  width: 100%; /* Make the slider span the full width */
-  background-color: red;
+  -webkit-appearance: none; /* Remove default styles for WebKit browsers */
+  appearance: none; /* Remove default styles for non-WebKit browsers */
+  width: 100%; /* Set width of the slider */
+  height: 10px; /* Set height of the slider */
+  background: #ddd; /* Set background color of the slider track */
+  border-radius: 5px; /* Set border radius to make it rounded */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set initial opacity of the slider */
+  transition: opacity 0.2s; /* Add transition effect for opacity */
+}
+
+/* Customize slider thumb */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default styles for WebKit browsers */
+  appearance: none; /* Remove default styles for non-WebKit browsers */
+  width: 20px; /* Set width of the thumb */
+  height: 20px; /* Set height of the thumb */
+  background: #4800ff; /* Set background color of the thumb */
+  border-radius: 50%; /* Set border radius to make it circular */
+  cursor: ew-resize; /* Change cursor to pointer */
+}
+
+/* Add hover effect to the slider */
+.slider:hover {
+  opacity: 1; /* Change opacity on hover */
 }
 
 .fade {
@@ -456,7 +483,7 @@ body {
   
   @-webkit-keyframes spin {
     from {                                     }
-    to   { -webkit-transform: rotateZ(360deg); }
+    to   { -webkit-transform: rotateZ(720deg); }
   }
   
   /* keyframes definition for other browsers */
@@ -467,12 +494,12 @@ body {
   }
   
   @keyframes bounce {
-    from, to  { border-radius: 50%;
+    from, to  { border-radius: 0px;
       bottom: 0;
       animation-timing-function: ease-out;
     }
-    50% {border-radius: 0px;
-      bottom: 220px;
+    50% {border-radius: 50%;
+      bottom: var(--bounce-bottom);
       animation-timing-function: ease-in;
     }
   }
@@ -493,9 +520,6 @@ body {
   }
   
   /* styles for the stage and animated elements */
-  
-  
-  
   #traveler {
     position:relative;
     width: 20px;
@@ -516,16 +540,17 @@ body {
   
   #bouncer {
     position: absolute;
+    cursor: help;
     width: 20px;
     height: 20px;
-    border: 2px solid;
+    border: 2px solid rgb(0, 144, 43);
     border-radius: 10px;
     background: rgb(0, 0, 252);
     background: -webkit-radial-gradient(60% 40%, circle, rgba(26, 255, 0, 0.8), rgb(140, 0, 255) 50%) red;
     background: -moz-radial-gradient(60% 40%, circle, rgba(255,255,255,0.8), rgb(98, 255, 0) 50%) red;
     background: -o-radial-gradient(60% 40%, circle, rgba(255, 255, 255, 0.8), red 50%) red;
     background: -ms-radial-gradient(60% 40%, circle, rgba(255,255,255,0.8), red 50%) red;
-    background: radial-gradient(60% 40%, circle, rgba(0, 255, 17, 0.8), red 50%) red;
+    background: radial-gradient(60% 40%, circle, rgba(0, 255, 17, 0.8), rgb(255, 0, 179) 50%) red;
   
     -webkit-animation-name: bounce, spin;
     -webkit-animation-iteration-count: infinite;
@@ -533,8 +558,31 @@ body {
   
     animation-name: bounce, spin;
     animation-iteration-count: infinite;
-    animation-duration: 4.2s;
+    animation-duration: 2.2s;
+
+    
   }
+
+  :root {
+    --random-min: 180; /* Minimum value */
+    --random-max: 220; /* Maximum value */
+    --bounce-bottom: calc(var(--random-min)px + (var(--random-max) - var(--random-min)) * random());
+  }
+
+  #balltrail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .ball-trail-spark {
+    width: 16px; /* Adjust the width of the ball trail spark */
+    height: 6px; /* Adjust the height of the ball trail spark */
+    background-color: rgba(0, 255, 251, 0.5); /* Adjust the color and opacity of the ball trail spark */
+  }
+
 
   @keyframes bluesky {
     0% {

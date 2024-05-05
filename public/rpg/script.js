@@ -322,51 +322,22 @@ function pick(guess) {
 
 //sounds
 //#region
-const playButton1 = document.getElementById('playButton1');
-const radioPlayer1 = document.getElementById('radioPlayer1');
-const playButton2 = document.getElementById('playButton2');
-const radioPlayer2 = document.getElementById('radioPlayer2');
-const playButton3 = document.getElementById('playButton3');
-const radioPlayer3 = document.getElementById('radioPlayer3');
-const playButton4 = document.getElementById('playButton4');
-const radioPlayer4 = document.getElementById('radioPlayer4');
+const radioButtons = document.querySelectorAll('.playButton');
 
-playButton1.addEventListener('click', () => {
-    if (radioPlayer1.paused) {
-        radioPlayer1.play();
-        playButton1.innerText = 'Pause Radio';
-    } else {
-        radioPlayer1.pause();
-        playButton1.innerText = 'Play Radio';
-    }
-});
-
-playButton2.addEventListener('click', () => {
-    if (radioPlayer2.paused) {
-        radioPlayer2.play();
-        playButton2.innerText = 'Pause Radio';
-    } else {
-        radioPlayer2.pause();
-        playButton2.innerText = 'Play Radio';
-    }
-});
-playButton3.addEventListener('click', () => {
-    if (radioPlayer3.paused) {
-        radioPlayer3.play();
-        playButton3.innerText = 'Pause Radio';
-    } else {
-        radioPlayer3.pause();
-        playButton3.innerText = 'Play Radio';
-    }
-});
-playButton4.addEventListener('click', () => {
-    if (radioPlayer4.paused) {
-        radioPlayer4.play();
-        playButton4.innerText = 'Pause Radio';
-    } else {
-        radioPlayer4.pause();
-        playButton4.innerText = 'Play Radio';
-    }
+// Toggle play/pause for radio buttons
+radioButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        const radioPlayer = radioPlayers[index]; // Access the corresponding audio player using the index
+        if (radioPlayer.paused) {
+            radioPlayer.play();
+            button.innerHTML = '<span class="material-symbols-outlined">pause_circle</span>';
+            button.style.setProperty('--animation-duration', '0.5s'); // Set animation duration for the current button
+        } else {
+            radioPlayer.pause();
+            button.innerHTML = '<span class="material-symbols-outlined">play_circle</span>';
+            button.style.setProperty('--animation-duration', '2s'); // Reset animation duration for the current button
+        }
+    });
 });
 //#endregion
 
@@ -473,5 +444,58 @@ function createSpark(x, y) {
   spark.addEventListener('animationend', function() {
     spark.remove();
   });
+}
+
+document.documentElement.style.setProperty('--bounce-bottom', getRandomBottom());
+
+// Get the element
+var bouncer = document.getElementById('bouncer');
+// Set the initial value for bottom property
+bouncer.style.setProperty('--bounce-bottom', getRandomBottom());
+
+// Function to update the bottom property with a random value
+function updateBottomProperty() {
+  bouncer.style.setProperty('--bounce-bottom', getRandomBottom());
+}
+
+// Function to generate a random value for the bottom property
+function getRandomBottom() {
+  // Array of three possible values for bottom property
+  var bottoms = ['100px', '200px', '280px'];
+  // Randomly select one value from the array
+  return bottoms[Math.floor(Math.random() * bottoms.length)];
+}
+
+// Trigger the update every time the animation iteration ends
+bouncer.addEventListener('animationiteration', updateBottomProperty);
+
+
+
+//balltrail
+var ballTrail = document.getElementById('balltrail');
+var intervalID;
+
+document.getElementById('bouncer').addEventListener('animationstart', function() {
+  intervalID = setInterval(createTrail, 100); // Adjust the interval duration as needed
+});
+
+document.getElementById('bouncer').addEventListener('animationend', function() {
+  clearInterval(intervalID); // Clear the interval when the animation ends
+});
+
+function createTrail() {
+  var bouncer = document.getElementById('bouncer');
+  var bouncerRect = bouncer.getBoundingClientRect();
+
+  var spark = document.createElement('div');
+  spark.classList.add('spark', 'ball-trail-spark'); // Add both classes to the spark element
+  spark.style.left = (bouncerRect.left + bouncerRect.width / 2) + 'px'; // Center spark horizontally
+  spark.style.top = (bouncerRect.top + bouncerRect.height / 2) + 'px'; // Center spark vertically
+  ballTrail.appendChild(spark);
+
+  // Remove the spark element after a certain duration
+  setTimeout(function() {
+    spark.parentNode.removeChild(spark);
+  }, 1000); // Adjust the duration as needed
 }
 
