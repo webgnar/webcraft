@@ -3,77 +3,705 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./styles.css">
-    <title>RPG - Dragon Repeller</title>
-   <style>
-    body {
-        background-color: #0a0a23;
+    <title>God mode</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<style>
+  body {
+    background-color: #0a0a23;
+    
+  }
+
+  .spark {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: yellow;
+    border-radius: 50%;
+    animation: spark 0.5s linear forwards;
+  }
+  #mousesparks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevent the container from blocking mouse events */
+  }
+  @keyframes spark {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2);
+    }
+  }
+
+ 
+  #text {
+    background-color: #0a0a23;
+    color: #00ff15;
+    text-shadow: 2px 2px black;
+    margin-top: 10px;
+    padding: 10px;
+    background: linear-gradient(86deg,#a682ec,#561f9d,#a37624,#593e1c,#7a9e86,#3ac91f);
+  background-size: 360% 360%;
+  animation: gradient-animation 30s ease infinite;
+    z-index: 1;
+  }
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  #text::selection {
+    background-color: lime;
+    color: rgb(242, 255, 0);
+  }
+  
+  #game {
+    max-width: 500px;
+    max-height: 400px;
+    background-image: repeating-linear-gradient(var(--a), #0898ff, yellow 10vw);
+    animation-name: bgrotate;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-duration: 30s;
+    color: #ffffff;
+    margin: 30px auto 0px;
+    padding: 10px;
+    z-index: 2;
+  }
+  @property --a {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 135deg;
+  }
+  
+  @keyframes bgrotate {
+    from {
+      --a: 135deg;
+    }
+    to {
+      --a: 315deg;
+    }
+  }
+
+  #game::selection{
+    background-color: magenta;
+    color: aqua;
+  }
+  
+
+  #stats {
+  
+    border: 1px solid white;
+    padding: 5px;
+    color: #000000;
+    background-image: radial-gradient(circle farthest-corner at var(--c) var(--d), yellow 0.5em, var(--e) 2.5em);
+    animation-name: movecenter;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-duration: 10s;
+
+    
+    font-size: 1.6em;
+    display: flex;
+    justify-content: space-around;
+    font-family: "Jersey 15", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    max-height: 200px;
+    cursor:copy;
+  }
+
+  @property --c {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+  }
+  
+  @property --d {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+  }
+  
+  @property --e {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: midnightblue;
+  }
+  
+  @keyframes movecenter {
+    from {
+      --c: 0%;
+      --d: 100%;
+      --e: midnightblue;
+      color: antiquewhite;
+      text-shadow: 5px 1px #000000;
+      border: 1px solid white;
+    }
+    50% {
+      --d: 20%;
+      --e: lightblue; 
+      color: rgb(1, 20, 115);
+      text-shadow: 1px 2px #000000;
+      border: 1px solid black;
+    }
+    to {
+      --c: 100%;
+      --d: 100%;
+      color: antiquewhite;
+      text-shadow: -5px 1px #000000;
+      border: 1px solid white;
+    }
+  }
+
+  #xpText{
+    color: green;
+    font-family:'Times New Roman', Times, serif;
+    text-shadow: 1px 1px #000000;
+  }
+  #healthText{
+    color: red;
+    font-family:'Times New Roman', Times, serif;
+    text-shadow: 1px 1px #000000;
+  }
+  #goldText{
+    color: gold;
+    
+    font-family:'Times New Roman', Times, serif;
+    text-shadow: 1px 1px #000000;
+  }
+ 
+ .stat span{
+    cursor:pointer;
+ }
+
+ #radio{
+    margin: 5px;
+    display: flex;
+    
+    background-image: url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23swXdGz84t22ApxFSDH2bCEgtm8gT5VCXiBQUc6S6uLR1fR2rrHevE5n5hiDFB96fwuM.gif');
+    background-size: contain; /* Adjust the size of the background image */
+    background-repeat: repeat; 
+    padding: 5px;
+    animation: radiodiv 2s ease-in-out 1s infinite;
+    animation-direction: alternate;
+ }
+ @keyframes radiodiv{
+    from {
+        margin: 10;
       }
-      
-      #text {
-        background-color: #0a0a23;
-        color: #ffffff;
-        padding: 10px;
+     to{
+        margin: 0;
       }
-      
-      #game {
-        max-width: 500px;
-        max-height: 400px;
-        background-color: #ffffff;
-        color: #ffffff;
-        margin: 30px auto 0px;
-        padding: 10px;
+ }
+ #radio button{
+    font-family: "Share Tech Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    background-color: black;
+    color: white;
+    animation: radiotext 0.5s ease-in-out 1s infinite;
+ }
+ @keyframes radiotext{
+    0%{
+      color: white;
+    }
+    50%{
+      color: rgb(86, 85, 85);
+    }
+    100%{
+      color: white;
+    }
+ }
+ #radio button:hover{
+    background-color: white;
+    color: black;
+
+ }
+ .playButton:hover{ 
+    cursor: pointer;
+}
+
+#radio-slider {
+  background-color: darkblue;
+  border-radius: 50%;
+}
+
+.slider {
+  width: 100%; /* Make the slider span the full width */
+  background-color: red;
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade.active {
+  opacity: 1;
+}
+
+  #controls{
+ 
+  
+    display: flex;
+    position: absolute;
+    justify-content: space-around;
+    margin-top: 10px;
+    border-radius: 0%;
+    background-image: repeating-linear-gradient(var(--a), #000000, rgb(255, 0, 30) 2vw);
+    animation-name: bgrotate2;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-duration: 30s;
+    cursor: grab;
+    margin-bottom: 10px;
+    z-index: 1;
+  }
+  @keyframes bgrotate2 {
+    from {
+      --a: 335deg;
+    }
+    to {
+      --a: 115deg;
+    }
+  }
+  
+ .button{
+    font-family: "Share Tech Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.6em;
+    max-height: 30px;
+    border-radius: 5%;
+    border: px solid;
+    margin: 10px;
+    background-image: linear-gradient(#aeff00, #ff0d00);
+    color: #3c00ff;
+ }
+ .button:hover{
+    border: 2px solid black;
+    cursor: pointer;
+    color: #000000;
+    background-color: #32fe54;
+    background-image: linear-gradient(#15ff00, #003cff);
+ }
+  
+
+
+
+#monsterStats {
+    display: none;
+    border: 1px solid #0a0a23;
+    padding: 5px;
+    color: black;
+    background-image: repeating-linear-gradient(var(--a), #00ff33, rgb(247, 0, 255) 20vw);
+    animation-name: bgrotate2;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+  }
+  @keyframes bgrotate2 {
+    from {
+      --a: 435deg;
+    }
+    to {
+      --a: 315deg;
+    }
+  }
+
+  .locationBackgrounds{
+    width: 100%;
+    height: 120px;
+  }
+  .anibox{
+    width: 100px;
+    height: 100px;
+    margin: 30px;
+    animation: anibox 4s ease-in-out 1s infinite;
+  }
+  #town-square {
+    background-color: lightblue;
+  }
+  
+
+
+  /* Additional styles for specific elements within each location */
+  #town-square #stats {
+    color: white;
+  }
+  
+  #store #stats {
+    color: gold;
+  }
+  
+  #cave #stats {
+    color: green;
+  }
+  
+
+
+  #scene{
+    display: flex;
+    max-width: 500px;
+    height: 100px;
+    margin: 30px auto;
+    justify-content: center;
+    z-index: -1;
+    
+  }
+
+  #scene :nth-child(1){
+    background-color: red;
+  }
+  #scene :nth-child(2){
+    background-color: rgb(95, 160, 21);
+  }
+  #scene :nth-child(3){
+    background-color: rgb(255, 187, 0);
+  }
+
+  
+  #sky{
+    background-color: aqua;
+    width: 100%;
+    height: 100px;
+    animation: bluesky 2s ease-in-out 1s infinite;
+    display: flex;
+    
+  }
+
+  .cloud{
+    background-color: white;
+    width: calc(100%/3);
+    height: 50%;
+    border-radius: 50%;
+    animation: cloud 4s ease-in-out 1s infinite;
+  }
+
+  #bottombox{
+    background-color: rgb(74, 120, 0);
+    width: 500px;
+    height: 180px;
+    z-index: 5;
+    margin: 10px auto 5px;
+
+    
+  }
+
+  #bg-triangle{
+    height: 20%;
+    margin: 5px;
+    background: #36c;
+    background:
+      linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 0 0,
+      linear-gradient(245deg, transparent 75%, rgba(255,255,255,.8) 75%) 0 0,
+      linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px,
+      linear-gradient(245deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px,#36c;
+    background-size: 15px 30px;
+  }
+
+  #bg-checker{
+    height:20%;
+    margin: 5px;
+    background-color: #eee;
+    background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
+    linear-gradient(-45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+    background-size: 10px 10px;
+  }
+
+  #bg-pyramid{
+    height:40px;
+    margin: 5px;
+    background: linear-gradient(315deg, transparent 75%, #d45d55 0)-10px 0,
+    linear-gradient(45deg, transparent 75%, #d45d55 0)-10px 0,
+    linear-gradient(135deg, #a7332b 50%, transparent 0) 0 0,
+    linear-gradient(45deg, #6a201b 50%, #561a16 0) 0 0 #561a16;
+    background-size: 20px 20px;
+  }
+
+  #bg-honeycomb{
+    height:40px;
+    margin: 5px;
+    background:
+    radial-gradient(circle farthest-side at 0% 50%,#fb1 23.5%,rgba(240,166,17,0) 0)21px 30px,
+    radial-gradient(circle farthest-side at 0% 50%,#B71 24%,rgba(240,166,17,0) 0)19px 30px,
+    linear-gradient(#fb1 14%,rgba(240,166,17,0) 0, rgba(240,166,17,0) 85%,#fb1 0)0 0,
+    linear-gradient(150deg,rgb(255, 17, 17) 24%,#B71 0,#B71 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,#B71 0,#B71 76%,#fb1 0)0 0,
+    linear-gradient(30deg,#fb1 24%,#B71 0,#B71 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,#B71 0,rgb(136, 0, 255) 76%,#fb1 0)0 0,
+    linear-gradient(90deg,rgb(123, 0, 255) 2%,rgb(251, 255, 0) 0,#fb1 98%,#B71 0%)0 0 rgb(76, 0, 255);
+    background-size: 10px 40px;
+  }
+
+  @-webkit-keyframes travel {
+    from { left: 0;     }
+    to   { left: 640px; }
+  }
+  
+  @-webkit-keyframes bounce {
+    from, to  {
+      bottom: 0;
+      -webkit-animation-timing-function: ease-out;
+    }
+    50% {
+      bottom: 220px;
+      -webkit-animation-timing-function: ease-in;
+    }
+  }
+  
+  @-webkit-keyframes spin {
+    from {                                     }
+    to   { -webkit-transform: rotateZ(360deg); }
+  }
+  
+  /* keyframes definition for other browsers */
+  
+  @keyframes travel {
+    from { left: 0;     }
+    to   { left: 500px; }
+  }
+  
+  @keyframes bounce {
+    from, to  { border-radius: 50%;
+      bottom: 0;
+      animation-timing-function: ease-out;
+    }
+    50% {border-radius: 0px;
+      bottom: 220px;
+      animation-timing-function: ease-in;
+    }
+  }
+  
+  @keyframes spin {
+    from { border-radius: 50%;
+      -moz-transform: rotate(0);
+      -o-transform: rotate(0);
+      -ms-transform: rotate(0);
+      transform: rotate(0);
+    }
+    to { border-radius: 20%;
+      -moz-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(1080deg);
+    }
+  }
+  
+  /* styles for the stage and animated elements */
+  
+  
+  
+  #traveler {
+    position:relative;
+    width: 20px;
+    height: 0px;
+    
+    -webkit-animation-name: travel;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-duration: 4.8s;
+  
+    animation-name: travel;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 4.8s;
+  }
+  
+  #bouncer {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    background: rgb(0, 0, 252);
+    background: -webkit-radial-gradient(60% 40%, circle, rgba(26, 255, 0, 0.8), rgb(140, 0, 255) 50%) red;
+    background: -moz-radial-gradient(60% 40%, circle, rgba(255,255,255,0.8), rgb(98, 255, 0) 50%) red;
+    background: -o-radial-gradient(60% 40%, circle, rgba(255, 255, 255, 0.8), red 50%) red;
+    background: -ms-radial-gradient(60% 40%, circle, rgba(255,255,255,0.8), red 50%) red;
+    background: radial-gradient(60% 40%, circle, rgba(0, 255, 17, 0.8), red 50%) red;
+  
+    -webkit-animation-name: bounce, spin;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 4.2s;
+  
+    animation-name: bounce, spin;
+    animation-iteration-count: infinite;
+    animation-duration: 4.2s;
+  }
+
+  @keyframes bluesky {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(20px);
+      background-color: rgb(0, 85, 255);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes cloud {
+    0% {
+      transform: translateY(0);
+      margin: 0px;
+    }
+    50% {
+      transform: translateY(20px);
+      background-color: rgb(177, 237, 245);
+      margin: 20px;
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+@keyframes anibox{
+    0% {
+        
+        
+        transform: translateY(0) rotateY(0deg) ;
+        width: 20px;
+        background-color: yellow;
+        opacity:10%;
       }
-      
-      #controls,
-      #stats {
-        border: 1px solid #0a0a23;
-        padding: 5px;
-        color: #0a0a23;
+      50% {
+        
+        transform: translateY(-300px) rotate(180deg);
+        background-color: rgb(177, 237, 245);
+       margin: 80px;
+        opacity:100%;
       }
-      
-      #monsterStats {
-        display: none;
-        border: 1px solid #0a0a23;
-        padding: 5px;
-        color: #ffffff;
-        background-color: #c70d0d;
+      100% {
+       
+        transform: translateY(0) rotate(720deg);
+        width: 20px;
+        background: #c70d0d;
+        opacity:10%;
       }
-      
-      .stat {
-        padding-right: 10px;
-      }
-      
-      button {
-        cursor: pointer;
-        color: #0a0a23;
-        background-color: #feac32;
-        background-image: linear-gradient(#fecc4c, #ffac33);
-        border: 3px solid #feac32;
-      }
-    </style>
+}
+
+</style>
+
   </head>
   <body>
-    <div id="game">
+    <div id="mousesparks"></div>
+    <audio id="random-sound-effect"></audio>
+    <audio id="game-over-sound" src="https://opengameart.org/sites/default/files/game_over_bad_chest.wav"></audio>
+    <audio id="cave-sound" src="https://opengameart.org/sites/default/files/magic_words.wav"></audio>
+    <audio id="buy-health" src="https://opengameart.org/sites/default/files/health_restore.wav"></audio>
+    <audio id="go-to-store" src="https://opengameart.org/sites/default/files/positive_0.ogg"></audio>
+    <audio id="go-to-town" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
+    
+    
+  <div id="game">
       <div id="stats">
-        <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
-        <span class="stat">Health: <strong><span id="healthText">100</span></strong></span>
+        <span class="stat">
+                XP: <strong><span id="xpText">0</span></strong>
+            </span>
+        <span class="stat">
+            Health: <strong><span id="healthText">100</span></strong>
+        </span>
+
         <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
+
       </div>
+      
+      <div id="radio">
+        
+        <button id="playButton1" class="playButton"><span class="material-symbols-outlined">
+          play_circle
+          </span>Radio</button>
+        <audio id="radioPlayer1" class="fade" src="https://radiok.broadcasttool.stream/play_128" type="audio/mpeg"></audio>
+
+
+        <button id="playButton2" class="playButton">Play Radio</button>
+        <audio id="radioPlayer2" class="fade" src="http://krui.student-services.uiowa.edu:8000/listen" type="audio/mpeg"></audio>
+
+        <button id="playButton3" class="playButton">Play Radio</button>
+        <audio id="radioPlayer3" class="fade" src="https://streams.wtju.net/wxtj-live.mp3" type="audio/mpeg"></audio>
+
+        <button id="playButton4" class="playButton">Play Radio</button>
+        <audio id="radioPlayer4" class="fade" src="https://das-edge11-live365-dal03.cdnstream.com/a45877" type="audio/mpeg"></audio>
+
+      </div>
+      <div id="radio-slider">
+        <input type="range" min="0" max="3" value="0" class="slider" id="station-slider">
+      </div>
+
       <div id="controls">
-        <button id="button1">Go to store</button>
-        <button id="button2">Go to cave</button>
-        <button id="button3">Fight dragon</button>
+        <button id="button1" class="button">Go to Store</button>
+        <button id="button2" class="button">Go into a Cave</button>
+        <button id="button3" class="button">Fight the Artist</button>
       </div>
       <div id="monsterStats">
         <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
         <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
       </div>
+
+    <div id="town-square" class="locationBackgrounds">
+            <div id="sky">
+                <div class="cloud"></div>
+                <div class="cloud"></div>
+                <div class="cloud"></div>
+            </div>
+        
+      <div id="scene">
+        <div class="anibox">fff</div>
+        <div class="anibox">gggg</div>
+        <div class="anibox">aaaa</div>
+    </div>
+    
+    
+      
+</div>
       <div id="text">
-        Welcome to Dragon Repeller. You must defeat the dragon that is preventing people from leaving the town. You are in the town square. Where do you want to go? Use the buttons above.
+        Welcome to God Mode. You must defeat the artist that is preventing people from achieving spiritual enlightenment. You are at home on the couch. Where do you want to go? Use the buttons above.
+      </div>
+
+      
+
+    </div>
+
+    <div id="bottombox">
+     
+      <div id="bg-triangle"></div>
+      <div id="bg-checker"></div>
+      <div id="bg-pyramid"></div>
+      <div id="bg-honeycomb"></div>
+      <div id="stage">
+        <div id="traveler">
+          <div id="bouncer"><!-- be the ball --></div>
+        </div>
       </div>
     </div>
-    <script>
-        let xp = 0;
+    
+  
+    
+    <script>let xp = 0;
 let health = 100;
 let gold = 50;
 let currentWeapon = 0;
@@ -91,6 +719,9 @@ const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
+
+
+
 const weapons = [
   { name: 'stick', power: 5 },
   { name: 'dagger', power: 30 },
@@ -119,17 +750,18 @@ const locations = [
     name: "town square",
     "button text": ["Go to store", "Go to cave", "Fight dragon"],
     "button functions": [goStore, goCave, fightDragon],
-    text: "You are in the town square. You see a sign that says \"Store\"."
+    text: "You are in the town square. You see a sign that says \"Store\".",
+    imageUrl: "https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23vho7jxcXZiQpdgJ6ukjFVFj6dC6QwJLRdLJmtTDyiHnT8PJmcoonnavPQpcSrnz6SBz.gif"
   },
   {
     name: "store",
-    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
+    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go outside"],
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "You enter the store."
   },
   {
     name: "cave",
-    "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
+    "button text": ["Fight slime", "Fight leopard", "Go to town"],
     "button functions": [fightSlime, fightBeast, goTown],
     text: "You enter the cave. You see some monsters."
   },
@@ -138,6 +770,30 @@ const locations = [
     "button text": ["Attack", "Dodge", "Run"],
     "button functions": [attack, dodge, goTown],
     text: "You are fighting a monster."
+  },
+  {
+    name: "kill monster",
+    "button text": ["Go to town square", "Go to town square", "Go to town square"],
+    "button functions": [goTown, goTown, goTown],
+    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+  },
+  {
+    name: "lose",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You die. &#x2620;"
+  },
+  { 
+    name: "win", 
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"], 
+    "button functions": [restart, restart, restart], 
+    text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;" 
+  },
+  {
+    name: "easter egg",
+    "button text": ["2", "8", "Go to town square?"],
+    "button functions": [pickTwo, pickEight, goTown],
+    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
   }
 ];
 
@@ -147,14 +803,42 @@ button2.onclick = goCave;
 button3.onclick = fightDragon;
 
 function update(location) {
+  monsterStats.style.display = "none";
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];
   button3.innerText = location["button text"][2];
   button1.onclick = location["button functions"][0];
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
-  text.innerText = location.text;
+  text.innerHTML = location.text;
+
+  switch (location.name) {
+    case "town square":
+      playLocationSound("go-to-town");
+      break;
+    case "store":
+      playLocationSound("store-sound");
+      break;
+    case "lose":
+      playLocationSound("game-over-sound");
+      break;
+    
+    // Add cases for other locations as needed
+    default:
+      // If there's no specific sound for the current location
+      // do nothing or play a default sound
+  }
+ 
 }
+
+function playLocationSound(soundId) {
+    const sound = document.getElementById(soundId);
+    if (sound) {
+      sound.play();
+    } else {
+      console.error(`Sound with ID ${soundId} not found.`);
+    }
+  }
 
 function goTown() {
   update(locations[0]);
@@ -166,6 +850,7 @@ function goStore() {
 
 function goCave() {
   update(locations[2]);
+  playLocationSound("cave-sound");
 }
 
 function buyHealth() {
@@ -174,6 +859,7 @@ function buyHealth() {
     health += 10;
     goldText.innerText = gold;
     healthText.innerText = health;
+    playLocationSound("buy-health");
   } else {
     text.innerText = "You do not have enough gold to buy health.";
   }
@@ -237,12 +923,261 @@ function goFight() {
 function attack() {
   text.innerText = "The " + monsters[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
+  health -= getMonsterAttackValue(monsters[fighting].level);
+  if (isMonsterHit()) {
+    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
+  } else {
+    text.innerText += " You miss.";
+  }
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  } else if (monsterHealth <= 0) {
+    if (fighting === 2) {
+      winGame();
+    } else {
+      defeatMonster();
+    }
+  }
+  if (Math.random() <= .1 && inventory.length !== 1) {
+    text.innerText += " Your " + inventory.pop() + " breaks.";
+    currentWeapon--;
+  }
+}
 
+function getMonsterAttackValue(level) {
+  const hit = (level * 5) - (Math.floor(Math.random() * xp));
+  console.log(hit);
+  return hit > 0 ? hit : 0;
+}
+
+function isMonsterHit() {
+  return Math.random() > .2 || health < 20;
 }
 
 function dodge() {
-
+  text.innerText = "You dodge the attack from the " + monsters[fighting].name;
 }
-    </script>
+
+function defeatMonster() {
+  gold += Math.floor(monsters[fighting].level * 6.7);
+  xp += monsters[fighting].level;
+  goldText.innerText = gold;
+  xpText.innerText = xp;
+  update(locations[4]);
+}
+
+function lose() {
+  update(locations[5]);
+}
+
+function winGame() {
+  update(locations[6]);
+}
+
+function restart() {
+  xp = 0;
+  health = 100;
+  gold = 50;
+  currentWeapon = 0;
+  inventory = ["stick"];
+  goldText.innerText = gold;
+  healthText.innerText = health;
+  xpText.innerText = xp;
+  goTown();
+}
+
+function easterEgg() {
+  update(locations[7]);
+}
+
+function pickTwo() {
+  pick(2);
+}
+
+function pickEight() {
+  pick(8);
+}
+
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+  for (let i = 0; i < 10; i++) {
+    text.innerText += numbers[i] + "\n";
+  }
+  if (numbers.includes(guess)) {
+    text.innerText += "Right! You win 20 gold!";
+    gold += 20;
+    goldText.innerText = gold;
+  } else {
+    text.innerText += "Wrong! You lose 10 health!";
+    health -= 10;
+    healthText.innerText = health;
+    if (health <= 0) {
+      lose();
+    }
+  }
+}
+
+//sounds
+//#region
+const playButton1 = document.getElementById('playButton1');
+const radioPlayer1 = document.getElementById('radioPlayer1');
+const playButton2 = document.getElementById('playButton2');
+const radioPlayer2 = document.getElementById('radioPlayer2');
+const playButton3 = document.getElementById('playButton3');
+const radioPlayer3 = document.getElementById('radioPlayer3');
+const playButton4 = document.getElementById('playButton4');
+const radioPlayer4 = document.getElementById('radioPlayer4');
+
+playButton1.addEventListener('click', () => {
+    if (radioPlayer1.paused) {
+        radioPlayer1.play();
+        playButton1.innerText = 'Pause Radio';
+    } else {
+        radioPlayer1.pause();
+        playButton1.innerText = 'Play Radio';
+    }
+});
+
+playButton2.addEventListener('click', () => {
+    if (radioPlayer2.paused) {
+        radioPlayer2.play();
+        playButton2.innerText = 'Pause Radio';
+    } else {
+        radioPlayer2.pause();
+        playButton2.innerText = 'Play Radio';
+    }
+});
+playButton3.addEventListener('click', () => {
+    if (radioPlayer3.paused) {
+        radioPlayer3.play();
+        playButton3.innerText = 'Pause Radio';
+    } else {
+        radioPlayer3.pause();
+        playButton3.innerText = 'Play Radio';
+    }
+});
+playButton4.addEventListener('click', () => {
+    if (radioPlayer4.paused) {
+        radioPlayer4.play();
+        playButton4.innerText = 'Pause Radio';
+    } else {
+        radioPlayer4.pause();
+        playButton4.innerText = 'Play Radio';
+    }
+});
+//#endregion
+
+//#region
+
+
+
+//sound effects on mouseover
+const mouseOverSoundButtons = document.querySelectorAll('.playButton');
+const soundPlayer = document.getElementById("random-sound-effect");
+
+const soundSources = [
+    'https://opengameart.org/sites/default/files/jumpland48000.mp3',
+    'https://opengameart.org/sites/default/files/huh.wav',
+    'https://opengameart.org/sites/default/files/bubbles-single1.wav',
+    'https://opengameart.org/sites/default/files/flame_0.ogg',
+    'https://opengameart.org/sites/default/files/thud2.wav',
+    'https://opengameart.org/sites/default/files/hit01.wav',
+    'https://opengameart.org/sites/default/files/slime_jump_0.mp3',
+    'https://opengameart.org/sites/default/files/jump_0.flac'
+    
+];
+
+mouseOverSoundButtons.forEach(button => {
+    button.addEventListener('mouseover', () => {
+        const randomIndex = Math.floor(Math.random() * soundSources.length);
+        const randomSound = soundSources[randomIndex];
+        soundPlayer.src = randomSound;
+        soundPlayer.play();
+    });
+});
+
+//#endregion
+
+//#region radio slider
+const stationSlider = document.getElementById('station-slider');
+const radioPlayers = [
+  document.getElementById('radioPlayer1'),
+  document.getElementById('radioPlayer2'),
+  document.getElementById('radioPlayer3'),
+  document.getElementById('radioPlayer4')
+];
+
+stationSlider.addEventListener('input', function() {
+  const stationIndex = parseInt(this.value);
+  pauseAllRadios(); // Pause all radios before changing the station
+  playRadio(stationIndex); // Play the selected station
+});
+
+function playRadio(stationIndex) {
+  radioPlayers[stationIndex].play();
+}
+
+function pauseAllRadios() {
+  radioPlayers.forEach(player => {
+    player.pause();
+  });
+}
+//#endregion
+
+
+
+//#region draggable controls
+const movableDiv = document.getElementById('controls');
+let offsetX, offsetY;
+let isDragging = false;
+
+movableDiv.addEventListener('mousedown', startDrag);
+document.addEventListener('mousemove', drag);
+document.addEventListener('mouseup', endDrag);
+
+function startDrag(e) {
+  isDragging = true;
+  offsetX = e.clientX - movableDiv.getBoundingClientRect().left;
+  offsetY = e.clientY - movableDiv.getBoundingClientRect().top;
+  movableDiv.style.cursor = 'grabbing';
+}
+
+function drag(e) {
+  if (!isDragging) return;
+  movableDiv.style.left = e.clientX - offsetX + 'px';
+  movableDiv.style.top = e.clientY - offsetY + 'px';
+}
+
+function endDrag() {
+  isDragging = false;
+  movableDiv.style.cursor = 'grab';
+}
+
+//#endregion
+
+document.addEventListener('mousemove', function(event) {
+  createSpark(event.clientX, event.clientY);
+});
+
+function createSpark(x, y) {
+  const spark = document.createElement('div');
+  spark.classList.add('spark');
+  spark.style.left = x + 'px';
+  spark.style.top = y + 'px';
+  document.getElementById('mousesparks').appendChild(spark);
+
+  // Remove the spark element after the animation completes
+  spark.addEventListener('animationend', function() {
+    spark.remove();
+  });
+}
+
+</script>
   </body>
 </html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./styles.css">
+    <title>God mode</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  </head>
+  <body>
+    <div id="mousesparks"></div>
+    <audio id="random-sound-effect"></audio>
+    <audio id="game-over-sound" src="https://opengameart.org/sites/default/files/game_over_bad_chest.wav"></audio>
+    <audio id="cave-sound" src="https://opengameart.org/sites/default/files/magic_words.wav"></audio>
+    <audio id="buy-health" src="https://opengameart.org/sites/default/files/health_restore.wav"></audio>
+    <audio id="go-to-store" src="https://opengameart.org/sites/default/files/positive_0.ogg"></audio>
+    <audio id="go-to-town" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
+    
+    
+  <div id="game">
+      <div id="stats">
+        <span class="stat">
+                XP: <strong><span id="xpText">0</span></strong>
+            </span>
+        <span class="stat">
+            Health: <strong><span id="healthText">100</span></strong>
+        </span>
+
+        <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
+
+      </div>
+      
+      <div id="radio">
+        
+        <button id="playButton1" class="playButton"><span class="material-symbols-outlined">
+          play_circle
+          </span>Radio</button>
+        <audio id="radioPlayer1" class="fade" src="https://radiok.broadcasttool.stream/play_128" type="audio/mpeg"></audio>
+
+
+        <button id="playButton2" class="playButton">Play Radio</button>
+        <audio id="radioPlayer2" class="fade" src="http://krui.student-services.uiowa.edu:8000/listen" type="audio/mpeg"></audio>
+
+        <button id="playButton3" class="playButton">Play Radio</button>
+        <audio id="radioPlayer3" class="fade" src="https://streams.wtju.net/wxtj-live.mp3" type="audio/mpeg"></audio>
+
+        <button id="playButton4" class="playButton">Play Radio</button>
+        <audio id="radioPlayer4" class="fade" src="https://das-edge11-live365-dal03.cdnstream.com/a45877" type="audio/mpeg"></audio>
+
+      </div>
+      <div id="radio-slider">
+        <input type="range" min="0" max="3" value="0" class="slider" id="station-slider">
+      </div>
+
+      <div id="controls">
+        <button id="button1" class="button">Go to Store</button>
+        <button id="button2" class="button">Go into a Cave</button>
+        <button id="button3" class="button">Fight the Artist</button>
+      </div>
+      <div id="monsterStats">
+        <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
+        <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
+      </div>
+
+    <div id="town-square" class="locationBackgrounds">
+            <div id="sky">
+                <div class="cloud"></div>
+                <div class="cloud"></div>
+                <div class="cloud"></div>
+            </div>
+        
+      <div id="scene">
+        <div class="anibox">fff</div>
+        <div class="anibox">gggg</div>
+        <div class="anibox">aaaa</div>
+    </div>
+    
+    
+      
+</div>
+      <div id="text">
+        Welcome to God Mode. You must defeat the artist that is preventing people from achieving spiritual enlightenment. You are at home on the couch. Where do you want to go? Use the buttons above.
+      </div>
+
+      
+
+    </div>
+
+    <div id="bottombox">
+     
+      <div id="bg-triangle"></div>
+      <div id="bg-checker"></div>
+      <div id="bg-pyramid"></div>
+      <div id="bg-honeycomb"></div>
+      <div id="stage">
+        <div id="traveler">
+          <div id="bouncer"><!-- be the ball --></div>
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <script src="./script.js"></script>
+  </body>
+</html>
