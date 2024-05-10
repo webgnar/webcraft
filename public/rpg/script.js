@@ -357,7 +357,9 @@ const soundSources = [
     'https://opengameart.org/sites/default/files/thud2.wav',
     'https://opengameart.org/sites/default/files/hit01.wav',
     'https://opengameart.org/sites/default/files/slime_jump_0.mp3',
-    'https://opengameart.org/sites/default/files/jump_0.flac'
+    'https://opengameart.org/sites/default/files/jump_0.flac',
+    'https://github.com/webgnar/QFSHIVE/raw/main/sounds/snd_alert/snd_alert.mp3'
+    
     
 ];
 
