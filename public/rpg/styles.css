@@ -57,7 +57,7 @@ body {
 
   #text::selection {
     background-color: lime;
-    color: rgb(242, 255, 0);
+    color: rgb(238, 0, 255);
   }
   
   #game {
@@ -115,6 +115,7 @@ body {
     cursor:cell;
   }
 
+
   @property --c {
     syntax: "<percentage>";
     inherits: false;
@@ -163,6 +164,7 @@ body {
     font-family:'Times New Roman', Times, serif;
     text-shadow: 1px 1px #000000;
   }
+
   #healthText{
     color: red;
     font-family:'Times New Roman', Times, serif;
@@ -178,6 +180,7 @@ body {
  .stat span{
     cursor:ne-resize;
  }
+
 
  .material-symbols-outlined{
   vertical-align: middle;
@@ -304,7 +307,7 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 0.6em;
-    max-height: 30px;
+    height: 40px;
     border-radius: 5%;
     border: px solid;
     margin: 10px;
@@ -324,6 +327,7 @@ body {
 
 #monsterStats {
     display: none;
+    font-family: "Share Tech Mono", monospace;
     border: 1px solid #0a0a23;
     padding: 5px;
     color: black;
@@ -332,6 +336,17 @@ body {
     animation-direction: alternate;
     animation-iteration-count: infinite;
     animation-duration: 2s;
+  }
+
+  #monsterName{
+    font-size: 18px;
+    background-color: rgb(0, 0, 0);
+    color: lime;
+  }
+  #monsterHealth{
+    font-size: 18px;
+    background-color: red;
+    color: pink;
   }
   @keyframes bgrotate2 {
     from {
@@ -408,8 +423,154 @@ body {
     width: calc(100%/3);
     height: 50%;
     border-radius: 50%;
-    animation: cloud 4s ease-in-out 1s infinite;
+    animation: cloud 4s linear 1s infinite;
   }
+
+  #imageChanger {
+    position: absolute;
+    top: 150px; 
+    left: 70%; 
+    width: 100px; 
+    height: 100px; 
+    border: 2px solid black; 
+    background-image: url("https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJd9nWfeJCAPtTcmb1KQAfJUnSyzXVZXHQ6qq92hsEvN7LrJHW3beqW8cAkkDdS.gif");
+    background-size: cover; 
+    cursor: pointer; 
+    animation: scaleUp 2s linear 1s infinite alternate;
+   
+  }
+  @keyframes scaleUp {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+  #imageChangerBottom{
+    position: absolute;
+    top: 300px; 
+    left: 20%; 
+    width: 300px; 
+    height: 200px; 
+    border: none;  
+    background-size: cover; 
+    cursor: pointer; 
+    pointer-events: none;
+    animation: rotateAndScale 8s ease infinite; 
+  }
+  @keyframes rotateAndScale {
+    0% {
+        transform: translateY(0px) rotate(0deg) scale(0.8);
+    }
+    50% {
+        transform: translateY(-180px) rotate(180deg) scale(1.5);
+        opacity:0.5;
+    }
+    100% {
+        transform: translateY(0px) rotate(360deg) scale(0.8);
+    }
+}
+
+#anibottom1{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  margin: 0 auto;
+  top: 100px;
+  animation: rotateSmall 4s ease infinite;
+}
+@keyframes rotateSmall{
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(0.8);
+}
+50% {
+    transform: translateY(-180px) rotate(-360deg) scale(1.5);
+    opacity: 0;
+}
+100% {
+    transform: translateY(0px) rotate(360deg) scale(0.8);
+}
+}
+
+#weaponImages {
+  display: flex;
+  flex-direction: row-reverse; /* Use flexbox */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  position: absolute; /* Position the container absolutely */
+    top: 400px; /* Adjust the top position as needed */
+    right: 35px; 
+    
+}
+
+.weapon-image {
+  width: 70px; /* Adjust width as needed */
+  height: 70px; /* Adjust height as needed */
+  margin-right: 10px; /* Adjust margin as needed */
+  
+    transition: transform 3s ease;
+}
+.weapon-image:nth-child(1) {
+  transform-origin: center;
+}
+
+.weapon-image:nth-child(2) {
+  transform-origin: center;
+}
+.weapon-image:nth-child(3) {
+  transform-origin: center;
+}
+
+.weapon-image:nth-child(4) {
+  transform-origin: center;
+}
+.weapon-image:hover {
+  transform: rotateZ(360deg); /* Rotate the image 360 degrees on hover */
+}
+#earth{
+  position:absolute;
+  left: 50%;
+  top: 12px;
+  width: 20px;
+  height: 20px;
+  background-image: url("https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJhTA7inahYcFUPKkNENYg2upgdCaq7EXaVMg87Qavn3JuaXG7DWfVDXv87N9DL.png");
+  background-size: cover;
+  animation: orbit 22s infinite;
+}
+
+@keyframes orbit {
+  0% {
+    
+    transform: scale(1.5);
+  }
+  25%{
+    
+    left: 5%;
+    transform: scale(1);
+    opacity: 70%;
+    animation-timing-function: ease-in-out;
+  }
+  50% {
+    transform: scale(0.5);
+    left: 50%; 
+    opacity: 25%;
+    top: 0px;
+    animation-timing-function: linear;
+  }
+  75%{
+    left: 95%;
+    transform: scale(1);
+    opacity: 70%;
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: scale(1.5);
+    left: 50%;
+    animation-timing-function: linear;
+  }
+}
 
   #bottombox{
     background-color: rgb(74, 120, 0);

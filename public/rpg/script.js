@@ -37,7 +37,7 @@ const monsters = [
     health: 60
   },
   {
-    name: "dragon",
+    name: "master artist",
     level: 20,
     health: 300
   }
@@ -45,46 +45,45 @@ const monsters = [
 const locations = [
   {
     name: "town square",
-    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    "button text": ["Go to Store", "Go to Cave", "Fight the Artist"],
     "button functions": [goStore, goCave, fightDragon],
-    text: "You are in the town square. You see a sign that says \"Store\".",
-    imageUrl: "https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23vho7jxcXZiQpdgJ6ukjFVFj6dC6QwJLRdLJmtTDyiHnT8PJmcoonnavPQpcSrnz6SBz.gif"
+    text: "You are in the town Plaza. Lots of people walking around in a hypnotized daze. You want nothing to do with any of them. You are on a mission. Focus. You see a sign that says \"Store\"."
   },
   {
     name: "store",
     "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go outside"],
     "button functions": [buyHealth, buyWeapon, goTown],
-    text: "You enter the store."
+    text: "You enter the store. You see a bunch of weird stuff for sale. There is only one thing that can help you fight evil, and thats weapons. You also see some CBD health potions."
   },
   {
     name: "cave",
-    "button text": ["Fight slime", "Fight leopard", "Go to town"],
+    "button text": ["Fight Slime", "Fight Fanged Beast", "Run to Town"],
     "button functions": [fightSlime, fightBeast, goTown],
-    text: "You enter the cave. You see some monsters."
+    text: "You enter the cave. The walls are covered with paintings. You see some monsters. They are wild and have no morals. One looks like mutant jelly, the other one looks like the big bad wolf. You carefully decide what you are going to do next."
   },
   {
     name: "fight",
     "button text": ["Attack", "Dodge", "Run"],
     "button functions": [attack, dodge, goTown],
-    text: "You are fighting a monster."
+    text: "You are fighting a monster. Sweat beads down your forehead as you consider what it means to fight wild beasts alone in nature. If you are injured, you will have to make it back to town without help. If you die, no one will ever know what happened to you."
   },
   {
     name: "kill monster",
-    "button text": ["Go to town square", "Go to town square", "Go to town square"],
+    "button text": ["Go to Plaza", "Go to Plaza", "Go to Plaza"],
     "button functions": [goTown, goTown, goTown],
-    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+    text: 'The monster screams "Faaaaack!" as it dies. You gain experience points and find some gold in its fur.'
   },
   {
     name: "lose",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
-    text: "You die. &#x2620;"
+    text: "You died. &#x2620; You did not build up enough experience points to survive. The earth will move forward without you now. Death isn't the worst thing. You will reincarnate on a planet similar to earth 40 years from now, to give it another go."
   },
   { 
     name: "win", 
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"], 
     "button functions": [restart, restart, restart], 
-    text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;" 
+    text: "You defeated the Master Artist Zack Goulet! YOU WIN THE GAME! &#x1F389; YOU ARE GOATED" 
   },
   {
     name: "easter egg",
@@ -109,21 +108,59 @@ function update(location) {
   button3.onclick = location["button functions"][2];
   text.innerHTML = location.text;
 
+  
+
   switch (location.name) {
-    case "town square":
-      playLocationSound("go-to-town");
-      break;
     case "store":
+      document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJhZ2p6xMK9CE2QX4RQVdsCyrwJSEuHe3amVHMK96ix5h4mZZSyAWNr7vZAnGKn.png')";
+      document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23tb68cYpUaoVjvcPL1x4LQPZ5jnL6J2DbVRNhYpsLFpBfged5RGmYWgtbYVQbyaRMQbt.gif')";
       playLocationSound("store-sound");
       break;
+    case "cave":
+      document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3ddr7TDkEw5tkauvtTFRH2u2egRwMcgMpspXicxBnVC1CMPDbZiNbnjcieKo5.png')";
+      document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23t798T4WFLrv82yKH1BdxzEaAuV72AAigosbu1XYCR7na3zVcz9JYSkDWLaqd6LmkvPo.gif')";
+      break;
+    case "town square":
+      document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJg6R757ydUTPwbdWaGwBSURS6pTkRKNFg8NLmXgt3fWi97qp1U1rCMEpLaiBFx.png')";
+      document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23uFMbmuB7AgotzqFGV9P32WXXWaB9WZmABgZKeXz9bxW68geMB9bsmd2iaXkdBBqaAvu.gif')";
+      playLocationSound("go-to-town");
+      break;
+
+      case "kill monster":
+        document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKKRrVKntmmY6QVsqU2GySGTDShDf3DKN5sbLrLP14wdHA2539UBj9VyZouDF71.gif')";
+        document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23tkZTu2P3KA6qbLivLBfWNQAK4hA31RgE8YeRGfGBZ6BF7PMxb8meLXRFxgNjsjHFatJ.gif')";
+        playLocationSound("kill-monster");
+        break;
+
     case "lose":
+      document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKRADg7VcVgZKZwFZku43oxgJnkWPJSt5Q84MtSssMTMtPjuUVo3sQUs1YHGv21.gif')";
+      document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/Ep1QdYpk1E5WFJoYV2qANGAeHBagRegT9aoBTjE9h9BZymfs77Yy4KKTHDdi3nuBV7g.gif')";
       playLocationSound("game-over-sound");
       break;
-    
-    // Add cases for other locations as needed
+
+      case "fight":
+      // Update image based on the monster being fought
+      switch (fighting) {
+        case 0: // Slime
+          document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3ZjQbGCoLK2oXdMJg3em6KMmgpaPcEwkPHkQzTGTf8LCdJasQNGZWyoD5avs8.PNG')";
+          playLocationSound("fight-slime");
+          break;
+        case 1: // Leopard Fanged Beast
+          document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJkLb5bwKCry1wc5BbXVkEMzjs1R2Z6aEy4cmZCT4tV2QwiT4hi4q5pNZmCcvon.PNG')";
+          playLocationSound("fight-beast");
+          break;
+        case 2: // Dragon Master Artist
+          document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJYzse1c2uspWwJsvKccWuUdxwpkmJA7BQrEwZyn6Am5siTr9psbpWZop7goc6w.png')";
+          playLocationSound("fight-artist");
+          break;
+        default:
+         
+          break;
+      }
+      break;
+
     default:
-      // If there's no specific sound for the current location
-      // do nothing or play a default sound
+      // Set a default image or do nothing if the location doesn't require a specific image
   }
  
 }
@@ -139,10 +176,12 @@ function playLocationSound(soundId) {
 
 function goTown() {
   update(locations[0]);
+  playLocationSound("go-to-town");
 }
 
 function goStore() {
   update(locations[1]);
+  playLocationSound("go-to-store");
 }
 
 function goCave() {
@@ -159,6 +198,7 @@ function buyHealth() {
     playLocationSound("buy-health");
   } else {
     text.innerText = "You do not have enough gold to buy health.";
+    playLocationSound("wiff"); 
   }
 }
 
@@ -172,11 +212,15 @@ function buyWeapon() {
       text.innerText = "You now have a " + newWeapon + ".";
       inventory.push(newWeapon);
       text.innerText += " In your inventory you have: " + inventory;
+      playLocationSound("buy-weapon");
+      updateWeapon();
     } else {
       text.innerText = "You do not have enough gold to buy a weapon.";
+      playLocationSound("wiff"); 
     }
   } else {
     text.innerText = "You already have the most powerful weapon!";
+    playLocationSound("coin");
     button2.innerText = "Sell weapon for 15 gold";
     button2.onclick = sellWeapon;
   }
@@ -189,6 +233,7 @@ function sellWeapon() {
     let currentWeapon = inventory.shift();
     text.innerText = "You sold a " + currentWeapon + ".";
     text.innerText += " In your inventory you have: " + inventory;
+    updateWeapon();
   } else {
     text.innerText = "Don't sell your only weapon!";
   }
@@ -222,9 +267,11 @@ function attack() {
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
-    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
+    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1; 
+    playLocationSound("attack");   
   } else {
-    text.innerText += " You miss.";
+    text.innerText += " You hesitated and missed. The monster doubts your abilities. Now you are scared.";
+    playLocationSound("wiff");   
   }
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
@@ -240,6 +287,7 @@ function attack() {
   if (Math.random() <= .1 && inventory.length !== 1) {
     text.innerText += " Your " + inventory.pop() + " breaks.";
     currentWeapon--;
+    updateWeapon();
   }
 }
 
@@ -255,6 +303,7 @@ function isMonsterHit() {
 
 function dodge() {
   text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+  playLocationSound("dodge");
 }
 
 function defeatMonster() {
@@ -320,6 +369,43 @@ function pick(guess) {
   }
 }
 
+
+
+
+function updateWeapon() {
+  const weaponImagesDiv = document.getElementById('weaponImages');
+  weaponImagesDiv.innerHTML = ''; // Clear previous images
+
+  inventory.forEach(weapon => {
+      const img = document.createElement('img');
+      img.src = getWeaponImageUrl(weapon); // Function to get the URL based on weapon name
+      img.alt = weapon;
+      img.classList.add('weapon-image'); // Add a class for styling
+      weaponImagesDiv.appendChild(img);
+  });
+}
+
+// Function to get the URL of the weapon image based on its name
+function getWeaponImageUrl(weaponName) {
+  // Add logic to map weapon names to their corresponding image URLs
+  switch (weaponName) {
+      case 'stick':
+          return 'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJd9jzVoQdKs4nqtcfR9VW1xQEDVGfV8ZZ47DLe5hWvhHmzMa8oswRPfmVsMKXW.PNG'; // Replace with the actual URL of the stick image
+      case 'dagger':
+          return 'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJd95u7RKRrwbDkg9fEeMwWRvgp4qGqJP1Fzb984qAeGb1RY5g6tL3AiTFVEa19.PNG'; // Replace with the actual URL of the dagger image
+      case 'claw hammer':
+          return 'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJhURRCfJwGCQqhQ8rD8fao9jPx2FwrZ3kRXGPTdVV29ZzPBxQvGqzEEEBM4TkR.PNG'; // Replace with the actual URL of the dagger image
+      case 'sword':
+          return 'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJmnWj1Yf1wf9oirhwTWLh5Q1HWkTVzrSPcZFo7bmoVNq9LvGoXjeTpsG1GfSYB.PNG'; // Replace with the actual URL of the dagger image
+      // Add cases for other weapons as needed
+      default:
+          return 'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJd9SKiZ9Y1aekQ2CE6k73ACRFyAKWq7XefJ4H7ZfRxpW3txmvCYGHRt8gT51wP.GIF'; // Replace with a default image URL
+  }
+}
+
+// Call updateWeapon() at the beginning of the game to initialize the inventory
+updateWeapon();
+
 //sounds
 //#region
 const radioButtons = document.querySelectorAll('.playButton');
@@ -357,8 +443,8 @@ const soundSources = [
     'https://opengameart.org/sites/default/files/thud2.wav',
     'https://opengameart.org/sites/default/files/hit01.wav',
     'https://opengameart.org/sites/default/files/slime_jump_0.mp3',
-    'https://opengameart.org/sites/default/files/jump_0.flac',
-    'https://github.com/webgnar/QFSHIVE/raw/main/sounds/snd_alert/snd_alert.mp3'
+    'https://opengameart.org/sites/default/files/jump_0.flac'
+    
     
     
 ];
@@ -370,6 +456,14 @@ mouseOverSoundButtons.forEach(button => {
         soundPlayer.src = randomSound;
         soundPlayer.play();
     });
+});
+
+//controls buttons
+document.querySelectorAll('.button').forEach(button => {
+  button.addEventListener('mouseover', () => {
+      const buttonSound = new Audio('https://opengameart.org/sites/default/files/coin_pickup_quiet.mp3');
+      buttonSound.play();
+  });
 });
 
 //#endregion

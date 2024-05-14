@@ -18,11 +18,20 @@
   <body>
     <div id="mousesparks"></div>
     <audio id="random-sound-effect"></audio>
-    <audio id="game-over-sound" src="https://opengameart.org/sites/default/files/game_over_bad_chest.wav"></audio>
+    <audio id="game-over-sound" src="https://opengameart.org/sites/default/files/death_sound.mp3"></audio>
     <audio id="cave-sound" src="https://opengameart.org/sites/default/files/magic_words.wav"></audio>
-    <audio id="buy-health" src="https://opengameart.org/sites/default/files/health_restore.wav"></audio>
-    <audio id="go-to-store" src="https://opengameart.org/sites/default/files/positive_0.ogg"></audio>
+    <audio id="buy-health" src="https://opengameart.org/sites/default/files/alien_jump_voice.wav"></audio>
+    <audio id="buy-weapon" src="https://opengameart.org/sites/default/files/letsbuild.mp3"></audio>
+    <audio id="go-to-store" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
     <audio id="go-to-town" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
+    <audio id="kill-monster" src="https://opengameart.org/sites/default/files/enemy_dies_zg.mp3"></audio>
+    <audio id="fight-slime" src="https://opengameart.org/sites/default/files/snd_pepe_cry.mp3"></audio>
+    <audio id="fight-beast" src="https://opengameart.org/sites/default/files/beast.mp3"></audio>
+    <audio id="fight-artist" src="https://opengameart.org/sites/default/files/extra_life_sound_new.mp3"></audio>
+    <audio id="attack" src="https://opengameart.org/sites/default/files/electric_spark.mp3"></audio>
+    <audio id="wiff" src="https://opengameart.org/sites/default/files/damn.mp3"></audio>
+    <audio id="dodge" src="https://opengameart.org/sites/default/files/jump_0.flac"></audio>
+    
     
     
   <div id="game">
@@ -71,10 +80,9 @@
         <button id="button2" class="button">Go into a Cave</button>
         <button id="button3" class="button">Fight the Artist</button>
       </div>
-      <div id="monsterStats">
-        <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
-        <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
-      </div>
+      
+
+      
 
     <div id="town-square" class="locationBackgrounds">
             <div id="sky">
@@ -84,13 +92,20 @@
             </div>
         
       <div id="scene">
-        <div class="anibox">fff</div>
-        <div class="anibox">gggg</div>
-        <div class="anibox">aaaa</div>
+        
+        <div class="anibox">zz</div>
+        <div class="anibox">gg</div>
+        <div class="anibox">gg</div>
     </div>
     
-    
+    <div id="imageChangerBottom">
+      <div id = "anibottom1"></div>
+    </div>
       
+</div>
+<div id="monsterStats">
+  <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
+  <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
 </div>
       <div id="text">
         Welcome to God Mode. You must defeat the artist that is preventing people from achieving spiritual enlightenment. You are at home on the couch. Where do you want to go? Use the buttons above.
@@ -100,21 +115,35 @@
 
     </div>
 
+    <div id="imageChanger"></div>
+    
+
     <div id="bottombox">
-     
+      
       <div id="bg-triangle"></div>
       <div id="bg-checker"></div>
       <div id="bg-pyramid"></div>
       <div id="bg-honeycomb"></div>
+      <div id ="earth"></div>
+      
       <div id="stage">
         <div id="traveler"><div id="balltrail"></div>
           <div id="bouncer"><!-- be the ball --></div>
         </div>
       </div>
+
+      <div id="weaponImages" class="weapon-image">
+        <!-- Each image placeholder will be dynamically populated -->
+    </div>
+
     </div>
     
-  
     
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three-gltf-loader"></script>
+   
     <script src="./script.js"></script>
+    
   </body>
 </html>
