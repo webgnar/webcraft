@@ -18,32 +18,33 @@
   <body>
     <div id="mousesparks"></div>
     <audio id="random-sound-effect"></audio>
-    <audio id="game-over-sound" src="https://opengameart.org/sites/default/files/death_sound.mp3"></audio>
+    <audio id="game-over-sound" src="https://opengameart.org/sites/default/files/snd_oh.mp3"></audio>
     <audio id="cave-sound" src="https://opengameart.org/sites/default/files/magic_words.wav"></audio>
     <audio id="buy-health" src="https://opengameart.org/sites/default/files/alien_jump_voice.wav"></audio>
     <audio id="buy-weapon" src="https://opengameart.org/sites/default/files/letsbuild.mp3"></audio>
     <audio id="go-to-store" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
     <audio id="go-to-town" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
-    <audio id="kill-monster" src="https://opengameart.org/sites/default/files/enemy_dies_zg.mp3"></audio>
-    <audio id="fight-slime" src="https://opengameart.org/sites/default/files/snd_pepe_cry.mp3"></audio>
+    <audio id="kill-monster" src="https://opengameart.org/sites/default/files/snd_enemy_dying.mp3"></audio>
+    <audio id="fight-slime" src="https://opengameart.org/sites/default/files/snd_frog_attack.mp3"></audio>
     <audio id="fight-beast" src="https://opengameart.org/sites/default/files/beast.mp3"></audio>
     <audio id="fight-artist" src="https://opengameart.org/sites/default/files/extra_life_sound_new.mp3"></audio>
     <audio id="attack" src="https://opengameart.org/sites/default/files/electric_spark.mp3"></audio>
     <audio id="wiff" src="https://opengameart.org/sites/default/files/damn.mp3"></audio>
     <audio id="dodge" src="https://opengameart.org/sites/default/files/jump_0.flac"></audio>
+    <audio id="coin" src="https://opengameart.org/sites/default/files/snd_pickupcoin.mp3"></audio>
     
     
     
   <div id="game">
       <div id="stats">
         <span class="stat">
-                XP: <strong><span id="xpText">0</span></strong>
+                &#129516 XP: <strong><span id="xpText">0</span></strong>
             </span>
         <span class="stat">
-            Health: <strong><span id="healthText">100</span></strong>
+            &#129385 Health: <strong><span id="healthText">100</span></strong>
         </span>
 
-        <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
+        <span class="stat">&#128184 Gold: <strong><span id="goldText">50</span></strong></span>
 
       </div>
       
@@ -90,6 +91,11 @@
                 <div class="cloud"></div>
                 <div class="cloud"></div>
             </div>
+
+            <div class="grinder">
+              <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3dxBkjgRHKnHjAortz5bKhCowY8KicU23biGusM7xQSCumuhG2kqkmN6uhi3a.gif" alt="Image 1" class="linepainting1">
+              <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJoHf2vGSxDtGQAMQVCtFYccC9beMJKbhS2LmT1L61agxUQk69JFnsMcwGmkZzc.gif" alt="Image 2" class="linepainting2">
+            </div>
         
       <div id="scene">
         
@@ -107,6 +113,9 @@
   <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
   <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
 </div>
+
+
+
       <div id="text">
         Welcome to God Mode. You must defeat the artist that is preventing people from achieving spiritual enlightenment. You are at home on the couch. Where do you want to go? Use the buttons above.
       </div>
@@ -120,10 +129,26 @@
 
     <div id="bottombox">
       
-      <div id="bg-triangle"></div>
+      <div id="bg-triangle">
+        <div id="time-container">
+          <div id="time">
+            <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23u677C5aFQJ5ZeHcXfPLPCkeHmCQBj47jQW3faVmpc164qy9f6PE67Urx8tQca297y3G.gif" alt="clock gif" class="time-clock">
+            <p id="current-time"></p>
+          </div>
+        </div>
+      </div>
       <div id="bg-checker"></div>
       <div id="bg-pyramid"></div>
-      <div id="bg-honeycomb"></div>
+      <div id="bg-honeycomb">
+        <div id="crypto-container">
+          <div id="crypto-prices">
+              <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/EoGqh59VuD8CC52scAPbNfhxddX17D499PWo4ZQ9tqmJ87CTBgmkvysMyXdDpz3FUHN.gif" alt="Pepe Logo" class="pepe-logo">
+              <p class="pepe-price" id="pepe-price"></p>
+          </div>
+      </div>
+          </div>
+      </div>
+
       <div id ="earth"></div>
       
       <div id="stage">

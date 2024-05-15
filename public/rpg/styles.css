@@ -61,6 +61,7 @@ body {
   }
   
   #game {
+    position: relative; /* Add this line */
     max-width: 500px;
     max-height: 400px;
     background-image: repeating-linear-gradient(var(--a), #0898ff, yellow 10vw);
@@ -394,7 +395,7 @@ body {
     height: 100px;
     margin: 30px auto;
     justify-content: center;
-    z-index: -1;
+   
     
   }
 
@@ -416,6 +417,7 @@ body {
     animation: bluesky 2s ease-in-out 1s infinite;
     display: flex;
     
+    
   }
 
   .cloud{
@@ -436,6 +438,7 @@ body {
     background-image: url("https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJd9nWfeJCAPtTcmb1KQAfJUnSyzXVZXHQ6qq92hsEvN7LrJHW3beqW8cAkkDdS.gif");
     background-size: cover; 
     cursor: pointer; 
+    z-index: 3;
     animation: scaleUp 2s linear 1s infinite alternate;
    
   }
@@ -446,6 +449,26 @@ body {
     to {
         transform: scale(1.1);
     }
+}
+
+.grinder {
+  position: absolute; /* Change position to absolute */
+  top: 300px; /* Adjust this value to position the parent div where you want */
+  left: 250px; /* Adjust this value to position the parent div where you want */
+  z-index: -1; /* Positioned behind other elements */
+}
+
+.linepainting1,
+.linepainting2 {
+  position: absolute;
+  top: 50%; /* Position in the middle vertically */
+  left: 50%; /* Position in the middle horizontally */
+  transform: translate(-50%, -50%); /* Center the images */
+  transition: transform 10s ease; /* Smooth transition for animation */
+}
+
+.linepainting2 {
+  z-index: 1; /* Ensure it's on top of linepainting1 */
 }
 
   #imageChangerBottom{
@@ -502,6 +525,7 @@ body {
   position: absolute; /* Position the container absolutely */
     top: 400px; /* Adjust the top position as needed */
     right: 35px; 
+    z-index: 3;
     
 }
 
@@ -581,6 +605,73 @@ body {
 
     
   }
+
+  #crypto-container {
+    position: relative;
+}
+
+#crypto-prices {
+  position: absolute;
+  top: 5px; /* Adjust this value as needed to move the prices div up */
+  left: 0;
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: lime;
+  border: 1px solid lime;
+  border-radius: 5px;
+  z-index: 1;
+  animation: pulseBackground 0.4s infinite alternate;
+}
+@keyframes pulseBackground {
+  0% {
+      background-color: black;
+  }
+  100% {
+      background-color: #333; /* Gray color */
+  }
+}
+
+.pepe-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.pepe-price {
+    font-size: 18px;
+    margin: 0; /* Remove default margins */
+    padding-right: 10px;
+    font-family: "Share Tech Mono", monospace;
+}
+
+#time-container{
+  position: relative;
+}
+
+#time {
+  position: absolute;
+  top: 5px; /* Adjust this value as needed to move the prices div up */
+  left: 0;
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: lime;
+  border: 1px solid lime;
+  border-radius: 5px;
+  font-family: "Share Tech Mono", monospace;
+  z-index: 1;
+  animation: pulseBackground 0.1s infinite alternate;
+  cursor: url(https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23u677C5aFQJ5ZeHcXfPLPCkeHmCQBj47jQW3faVmpc164qy9f6PE67Urx8tQca297y3G.gif),auto;
+}
+.time-clock{
+  margin-right: 5px;
+  margin-left: 5px;
+}
+#current-time{
+  font-size: 12px;
+  margin: 0;
+}
 
   #bg-triangle{
     height: 20%;
@@ -707,6 +798,7 @@ body {
     border: 2px solid rgb(0, 144, 43);
     border-radius: 10px;
     background: rgb(0, 0, 252);
+    z-index: 2;
     background: -webkit-radial-gradient(60% 40%, circle, rgba(26, 255, 0, 0.8), rgb(140, 0, 255) 50%) red;
     background: -moz-radial-gradient(60% 40%, circle, rgba(255,255,255,0.8), rgb(98, 255, 0) 50%) red;
     background: -o-radial-gradient(60% 40%, circle, rgba(255, 255, 255, 0.8), red 50%) red;

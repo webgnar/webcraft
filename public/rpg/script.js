@@ -220,9 +220,9 @@ function buyWeapon() {
     }
   } else {
     text.innerText = "You already have the most powerful weapon!";
-    playLocationSound("coin");
     button2.innerText = "Sell weapon for 15 gold";
     button2.onclick = sellWeapon;
+    playLocationSound("coin");
   }
 }
 
@@ -459,13 +459,24 @@ mouseOverSoundButtons.forEach(button => {
 });
 
 //controls buttons
+// Array containing URLs to the three sound files
+const soundUrls = [
+  'https://opengameart.org/sites/default/files/coin_pickup_quiet2.mp3',
+  'https://opengameart.org/sites/default/files/coin_pickup_quiet3.mp3',
+  'https://opengameart.org/sites/default/files/coin_pickup_quiet4.mp3'
+];
+
+// Loop through all elements with the class 'button' and add a mouseover event listener to each
 document.querySelectorAll('.button').forEach(button => {
   button.addEventListener('mouseover', () => {
-      const buttonSound = new Audio('https://opengameart.org/sites/default/files/coin_pickup_quiet.mp3');
+      // Choose a random index from 0 to 2 (inclusive) to select one of the sound URLs
+      const randomIndex = Math.floor(Math.random() * soundUrls.length);
+      // Create an Audio object for the randomly chosen sound
+      const buttonSound = new Audio(soundUrls[randomIndex]);
+      // Play the randomly chosen sound
       buttonSound.play();
   });
 });
-
 //#endregion
 
 //#region radio slider
@@ -595,3 +606,56 @@ function createTrail() {
   }, 1000); // Adjust the duration as needed
 }
 
+function updatePepePrice() {
+  fetch('https://api.coingecko.com/api/v3/simple/price?ids=pepe&vs_currencies=usd')
+      .then(response => response.json())
+      .then(data => {
+          const pepePrice = data.pepe.usd.toFixed(10); // Set the number of decimal places
+          document.getElementById('pepe-price').textContent = `$${pepePrice}`;
+      })
+      .catch(error => {
+          console.error('Error fetching Pepe price:', error);
+      });
+}
+
+// Initial update of the Pepe price
+updatePepePrice();
+
+// Update the Pepe price every 10 seconds
+setInterval(updatePepePrice, 10000); // 10000 milliseconds = 10 seconds
+
+            function updateTime() {
+              const currentTime = new Date();
+              const hours = currentTime.getHours().toString().padStart(2, '0');
+              const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+              const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+              const formattedTime = `${hours}:${minutes}:${seconds}`;
+              document.getElementById('current-time').textContent = formattedTime;
+          }
+          
+          // Initial update of the current time
+          updateTime();
+          
+          // Update the current time every second
+          setInterval(updateTime, 1000);
+
+
+          //grinder animation
+    document.addEventListener('DOMContentLoaded', function() {
+      var linepainting1 = document.querySelector('.linepainting1');
+      var linepainting2 = document.querySelector('.linepainting2');
+    
+      // Function to animate images
+      function animateImages() {
+        linepainting1.style.transform = 'translate(-50%, -100%)'; // Move linepainting1 up
+        linepainting2.style.transform = 'translate(-50%, -0%)'; // Move linepainting2 down
+        setTimeout(function() {
+          // Reverse the animation after 1 second
+          linepainting1.style.transform = 'translate(-50%, -50%)'; // Reset linepainting1 position
+          linepainting2.style.transform = 'translate(-50%, -50%)'; // Reset linepainting2 position
+        }, 1000);
+      }
+    
+      // Call the animateImages function periodically
+      setInterval(animateImages, 2000); // Change the interval as needed
+    });
