@@ -8,11 +8,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<link href="https://fonts.googleapis.com/css2?family=Nova+Script&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Nova+Script&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Nova+Script&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Jaini+Purva&family=Jersey+25+Charted&family=Nova+Script&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
   </head>
   <body>
@@ -24,7 +30,7 @@
     <audio id="buy-weapon" src="https://opengameart.org/sites/default/files/letsbuild.mp3"></audio>
     <audio id="go-to-store" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
     <audio id="go-to-town" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
-    <audio id="kill-monster" src="https://opengameart.org/sites/default/files/snd_enemy_dying.mp3"></audio>
+    <audio id="kill-monster" src="https://opengameart.org/sites/default/files/fuck.mp3"></audio>
     <audio id="fight-slime" src="https://opengameart.org/sites/default/files/snd_frog_attack.mp3"></audio>
     <audio id="fight-beast" src="https://opengameart.org/sites/default/files/beast.mp3"></audio>
     <audio id="fight-artist" src="https://opengameart.org/sites/default/files/extra_life_sound_new.mp3"></audio>
@@ -32,19 +38,25 @@
     <audio id="wiff" src="https://opengameart.org/sites/default/files/damn.mp3"></audio>
     <audio id="dodge" src="https://opengameart.org/sites/default/files/jump_0.flac"></audio>
     <audio id="coin" src="https://opengameart.org/sites/default/files/snd_pickupcoin.mp3"></audio>
+    <audio id="lose" src="https://opengameart.org/sites/default/files/snd_oh.mp3"></audio>
     
+    <div id="controls">
+      <button id="button1" class="button">Go to Store</button>
+      <button id="button2" class="button">Go into a Cave</button>
+      <button id="button3" class="button">Fight the Artist</button>
+    </div>
     
     
   <div id="game">
       <div id="stats">
-        <span class="stat">
+        <span class="stat" id="statXP">
                 &#129516 XP: <strong><span id="xpText">0</span></strong>
             </span>
-        <span class="stat">
+        <span class="stat" id="statHealth">
             &#129385 Health: <strong><span id="healthText">100</span></strong>
         </span>
 
-        <span class="stat">&#128184 Gold: <strong><span id="goldText">50</span></strong></span>
+        <span class="stat" id="statGold">&#128184 Gold: <strong><span id="goldText">50</span></strong></span>
 
       </div>
       
@@ -76,11 +88,7 @@
         <input type="range" min="0" max="3" value="0" class="slider" id="station-slider">
       </div>
 
-      <div id="controls">
-        <button id="button1" class="button">Go to Store</button>
-        <button id="button2" class="button">Go into a Cave</button>
-        <button id="button3" class="button">Fight the Artist</button>
-      </div>
+    
       
 
       
@@ -165,8 +173,7 @@
     
     
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three-gltf-loader"></script>
+    
    
     <script src="./script.js"></script>
     

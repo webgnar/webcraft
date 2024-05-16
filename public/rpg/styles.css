@@ -18,6 +18,7 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none; /* Prevent the container from blocking mouse events */
+    z-index: 40;
   }
   @keyframes spark {
     0% {
@@ -33,6 +34,7 @@ body {
   
  
   #text {
+    font-family: "Nova Script", system-ui;
     background-color: #0a0a23;
     color: #00ff15;
     text-shadow: 2px 2px black;
@@ -89,17 +91,13 @@ body {
     }
   }
 
-  #game::selection{
-    background-color: magenta;
-    color: aqua;
-  }
-  
 
   #stats {
   
     border: 1px solid white;
     padding: 5px;
     color: #000000;
+    
     background-image: radial-gradient(circle farthest-corner at var(--c) var(--d), yellow 0.5em, var(--e) 2.5em);
     animation-name: movecenter;
     animation-direction: alternate;
@@ -114,6 +112,7 @@ body {
     font-style: normal;
     max-height: 200px;
     cursor:cell;
+    z-index: 45;
   }
 
 
@@ -162,20 +161,48 @@ body {
 
   #xpText{
     color: green;
-    font-family:'Times New Roman', Times, serif;
+    font-family: "Jacquard 12", system-ui;
+    font-size: 24px;
     text-shadow: 1px 1px #000000;
   }
 
   #healthText{
     color: red;
-    font-family:'Times New Roman', Times, serif;
+    font-size: 24px;
+    font-family: "Ubuntu Sans Mono", monospace;
     text-shadow: 1px 1px #000000;
   }
+
+  #statHealth {
+    position: relative;
+  }
+  
+  #statHealth::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  #statHealth:hover::after {
+    opacity: 1;
+  }
+
   #goldText{
-    color: gold;
-    
-    font-family:'Times New Roman', Times, serif;
-    text-shadow: 1px 1px #000000;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    font-style: normal;
+    font-family: "Jaini Purva", system-ui;
+    text-shadow: 1px 1px #ffd500;
   }
  
  .stat span{
@@ -266,8 +293,11 @@ body {
 /* Add hover effect to the slider */
 .slider:hover {
   opacity: 1; /* Change opacity on hover */
+  box-shadow: 0px -10px 5px rgb(153, 255, 0); 
 }
-
+.slider::-webkit-slider-thumb:hover{
+  box-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
 .fade {
   opacity: 0;
   transition: opacity 1s ease-in-out;
@@ -282,17 +312,19 @@ body {
   
     display: flex;
     position: absolute;
+    top: 170px;
+    left: 70px;
     justify-content: space-around;
-    margin-top: 10px;
-    border-radius: 0%;
+    padding: 20px;
+    border-radius: 15%;
     background-image: repeating-linear-gradient(var(--a), #000000, rgb(255, 0, 30) 2vw);
     animation-name: bgrotate2;
     animation-direction: alternate;
     animation-iteration-count: infinite;
     animation-duration: 30s;
     cursor: grab;
-    margin-bottom: 10px;
-    z-index: 1;
+    
+    z-index: 50;
   }
   @keyframes bgrotate2 {
     from {
@@ -310,10 +342,16 @@ body {
     font-size: 0.6em;
     height: 40px;
     border-radius: 5%;
-    border: px solid;
-    margin: 10px;
+    box-shadow: 5px 5px 1px rgba(85, 0, 255, 0.7); 
+    margin-right: 4px;
+    padding: 0px;
     background-image: linear-gradient(#aeff00, #ff0d00);
     color: #3c00ff;
+    position: relative;
+  z-index: 2;
+ }
+ .button :nth-child(3){
+  margin-right: 0px;
  }
  .button:hover{
     border: 2px solid black;
@@ -321,6 +359,7 @@ body {
     color: #000000;
     background-color: #32fe54;
     background-image: linear-gradient(#15ff00, #003cff);
+    box-shadow: 3px 3px 1px rgba(255, 247, 0, 0.7); 
  }
   
 

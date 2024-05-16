@@ -42,6 +42,20 @@ const monsters = [
     health: 300
   }
 ]
+const textArray = [
+  "Hello there!",
+  "How are you today?",
+  "What's your favorite color?",
+  "Have a great day!",
+  "Keep smiling!",
+  "Coding is fun!",
+  "Stay curious!",
+  "Be kind to yourself!",
+  "You're awesome!"
+];
+
+const randomIndex = Math.floor(Math.random() * textArray.length);
+
 const locations = [
   {
     name: "town square",
@@ -69,9 +83,10 @@ const locations = [
   },
   {
     name: "kill monster",
-    "button text": ["Go to Plaza", "Go to Plaza", "Go to Plaza"],
+    "button text": ["Go to Plaza", "Go to Plaza", "Go Skate"],
     "button functions": [goTown, goTown, goTown],
-    text: 'The monster screams "Faaaaack!" as it dies. You gain experience points and find some gold in its fur.'
+    text: 'The monster screams "Faaaaack!" as it dies. You gain experience points and find some gold in the air.'
+    
   },
   {
     name: "lose",
@@ -135,7 +150,7 @@ function update(location) {
     case "lose":
       document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKRADg7VcVgZKZwFZku43oxgJnkWPJSt5Q84MtSssMTMtPjuUVo3sQUs1YHGv21.gif')";
       document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/Ep1QdYpk1E5WFJoYV2qANGAeHBagRegT9aoBTjE9h9BZymfs77Yy4KKTHDdi3nuBV7g.gif')";
-      playLocationSound("game-over-sound");
+      playLocationSound("lose");
       break;
 
       case "fight":
@@ -372,6 +387,10 @@ function pick(guess) {
 
 
 
+
+
+
+
 function updateWeapon() {
   const weaponImagesDiv = document.getElementById('weaponImages');
   weaponImagesDiv.innerHTML = ''; // Clear previous images
@@ -461,9 +480,11 @@ mouseOverSoundButtons.forEach(button => {
 //controls buttons
 // Array containing URLs to the three sound files
 const soundUrls = [
-  'https://opengameart.org/sites/default/files/coin_pickup_quiet2.mp3',
-  'https://opengameart.org/sites/default/files/coin_pickup_quiet3.mp3',
-  'https://opengameart.org/sites/default/files/coin_pickup_quiet4.mp3'
+  'https://opengameart.org/sites/default/files/174.mp3',
+  'https://opengameart.org/sites/default/files/285.mp3',
+  'https://opengameart.org/sites/default/files/396.mp3',
+  'https://opengameart.org/sites/default/files/417.mp3',
+  'https://opengameart.org/sites/default/files/528.mp3'
 ];
 
 // Loop through all elements with the class 'button' and add a mouseover event listener to each
@@ -509,29 +530,43 @@ function pauseAllRadios() {
 
 //#region draggable controls
 const movableDiv = document.getElementById('controls');
+let initialX, initialY;
 let offsetX, offsetY;
 let isDragging = false;
 
 movableDiv.addEventListener('mousedown', startDrag);
-document.addEventListener('mousemove', drag);
-document.addEventListener('mouseup', endDrag);
 
 function startDrag(e) {
   isDragging = true;
-  offsetX = e.clientX - movableDiv.getBoundingClientRect().left;
-  offsetY = e.clientY - movableDiv.getBoundingClientRect().top;
+  initialX = e.clientX;
+  initialY = e.clientY;
+  offsetX = movableDiv.getBoundingClientRect().left;
+  offsetY = movableDiv.getBoundingClientRect().top;
   movableDiv.style.cursor = 'grabbing';
+  document.addEventListener('mousemove', drag);
+  document.addEventListener('mouseup', endDrag);
+  e.preventDefault(); // Prevent default behavior during dragging
 }
 
 function drag(e) {
   if (!isDragging) return;
-  movableDiv.style.left = e.clientX - offsetX + 'px';
-  movableDiv.style.top = e.clientY - offsetY + 'px';
+  
+  let newX = e.clientX - initialX + offsetX;
+  let newY = e.clientY - initialY + offsetY;
+  
+  // Set new position with respect to boundaries
+  newX = Math.max(0, Math.min(newX, window.innerWidth - movableDiv.offsetWidth));
+  newY = Math.max(0, Math.min(newY, window.innerHeight - movableDiv.offsetHeight));
+  
+  movableDiv.style.left = newX + 'px';
+  movableDiv.style.top = newY + 'px';
 }
 
 function endDrag() {
   isDragging = false;
   movableDiv.style.cursor = 'grab';
+  document.removeEventListener('mousemove', drag);
+  document.removeEventListener('mouseup', endDrag);
 }
 
 //#endregion
@@ -539,6 +574,10 @@ function endDrag() {
 document.addEventListener('mousemove', function(event) {
   createSpark(event.clientX, event.clientY);
 });
+
+
+
+
 
 function createSpark(x, y) {
   const spark = document.createElement('div');
