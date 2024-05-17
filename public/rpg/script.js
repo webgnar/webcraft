@@ -27,72 +27,59 @@ const weapons = [
 ];
 const monsters = [
   {
-    name: "slime",
+    name: "green slime",
     level: 2,
     health: 15
   },
   {
-    name: "fanged beast",
+    name: "video game",
     level: 8,
     health: 60
   },
   {
-    name: "master artist",
+    name: "masterpiece",
     level: 20,
     health: 300
   }
 ]
-const textArray = [
-  "Hello there!",
-  "How are you today?",
-  "What's your favorite color?",
-  "Have a great day!",
-  "Keep smiling!",
-  "Coding is fun!",
-  "Stay curious!",
-  "Be kind to yourself!",
-  "You're awesome!"
-];
-
-const randomIndex = Math.floor(Math.random() * textArray.length);
 
 const locations = [
   {
     name: "town square",
-    "button text": ["Go to Store", "Go to Cave", "Fight the Artist"],
+    "button text": ["Store", "Train", "Artist"],
     "button functions": [goStore, goCave, fightDragon],
-    text: "You are in the town Plaza. Lots of people walking around in a hypnotized daze. You want nothing to do with any of them. You are on a mission. Focus. You see a sign that says \"Store\"."
+    text: "You are in the town Plaza. Lots of spots to skate and people walking around in a hypnotized daze, buying things. You are on a mission. Focus. You see a sign that says \"Store\"."
   },
   {
     name: "store",
-    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go outside"],
+    "button text": ["food", "Stimulant", "go Outside"],
     "button functions": [buyHealth, buyWeapon, goTown],
-    text: "You enter the store. You see a bunch of weird stuff for sale. There is only one thing that can help you fight evil, and thats weapons. You also see some CBD health potions."
+    text: "You enter the store. You see a bunch of weird stuff for sale. There is only one thing that can help you fight evil, and thats coffee or tea. You also see some unprocessed food from a small organic farm nearby."
   },
   {
     name: "cave",
-    "button text": ["Fight Slime", "Fight Fanged Beast", "Run to Town"],
+    "button text": ["Paint", "Code", "Skate"],
     "button functions": [fightSlime, fightBeast, goTown],
-    text: "You enter the cave. The walls are covered with paintings. You see some monsters. They are wild and have no morals. One looks like mutant jelly, the other one looks like the big bad wolf. You carefully decide what you are going to do next."
+    text: "You enter your mind. The walls are covered with paintings and life force codes to eternal existance. You see someone who looks like it hasnt read a book in a while. go in the sun for a while. You ponder if you should skate, paint or code."
   },
   {
     name: "fight",
-    "button text": ["Attack", "Dodge", "Run"],
+    "button text": ["Engage", "Smoke", "Quit"],
     "button functions": [attack, dodge, goTown],
-    text: "You are fighting a monster. Sweat beads down your forehead as you consider what it means to fight wild beasts alone in nature. If you are injured, you will have to make it back to town without help. If you die, no one will ever know what happened to you."
+    text: "You havent painted in months. You arnt even sure if you know how to paint anymore. Go ahead, smoke another cig and think about why you haven't been as productive as you want to be. The best time to start is yesterday."
   },
   {
     name: "kill monster",
     "button text": ["Go to Plaza", "Go to Plaza", "Go Skate"],
     "button functions": [goTown, goTown, goTown],
-    text: 'The monster screams "Faaaaack!" as it dies. You gain experience points and find some gold in the air.'
+    text: 'The painting yells "yoohoo!" as it resonates with the human eye in perfect harmony. You gain experience joy and a feeling of gratitude for just being alive. You hope this painting gets out to the world and makes it a better place. Stay gold.'
     
   },
   {
     name: "lose",
-    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button text": ["Earth?", "Earth?", "Earth?"],
     "button functions": [restart, restart, restart],
-    text: "You died. &#x2620; You did not build up enough experience points to survive. The earth will move forward without you now. Death isn't the worst thing. You will reincarnate on a planet similar to earth 40 years from now, to give it another go."
+    text: "You died. &#x2620; You did not build up enough motivation to finish the art. The earth will move forward without you now. Look forward to reincarnating on a planet similar to earth 40 years from now, or give it another go here on earth."
   },
   { 
     name: "win", 
@@ -102,9 +89,9 @@ const locations = [
   },
   {
     name: "easter egg",
-    "button text": ["2", "8", "Go to town square?"],
+    "button text": ["2", "8", "Too scared"],
     "button functions": [pickTwo, pickEight, goTown],
-    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
+    text: "You find a secret game within a game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
   }
 ];
 
@@ -212,7 +199,7 @@ function buyHealth() {
     healthText.innerText = health;
     playLocationSound("buy-health");
   } else {
-    text.innerText = "You do not have enough gold to buy health.";
+    text.innerText = "You do not have enough gold to buy such high quality food.";
     playLocationSound("wiff"); 
   }
 }
@@ -230,7 +217,7 @@ function buyWeapon() {
       playLocationSound("buy-weapon");
       updateWeapon();
     } else {
-      text.innerText = "You do not have enough gold to buy a weapon.";
+      text.innerText = "You do not have enough gold to upgrade your wellbeing in that way. You must train in the arts of Painting, Code, and Skating to procure imaginary Gold.";
       playLocationSound("wiff"); 
     }
   } else {
@@ -279,13 +266,13 @@ function goFight() {
 
 function attack() {
   text.innerText = "The " + monsters[fighting].name + " attacks.";
-  text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
+  text.innerText += " You engage the painting with your " + weapons[currentWeapon].name + "."+ " It appears somewhat effective, but there is more work still to do. This wont end tonight. You stay focused and fall into a mild flow state.";
   health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
     monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1; 
     playLocationSound("attack");   
   } else {
-    text.innerText += " You hesitated and missed. The monster doubts your abilities. Now you are scared.";
+    text.innerText += " You hesitated, got distracted, and missed the mark. The Universe doubts your abilities. Now you are scared for your future.";
     playLocationSound("wiff");   
   }
   healthText.innerText = health;
@@ -317,7 +304,8 @@ function isMonsterHit() {
 }
 
 function dodge() {
-  text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+  text.innerText = "You cant stop thinking about the  " + monsters[fighting].name + ". You begin to feel a mix of overstimulated exhaustion. You try to admire nature, but your mind wont stop revolving around this " + monsters[fighting].name + " thing.";
+  health -= 1;
   playLocationSound("dodge");
 }
 
@@ -383,11 +371,6 @@ function pick(guess) {
     }
   }
 }
-
-
-
-
-
 
 
 
@@ -659,42 +642,18 @@ function updatePepePrice() {
 
 // Initial update of the Pepe price
 updatePepePrice();
+setInterval(updatePepePrice, 10000); 
 
-// Update the Pepe price every 10 seconds
-setInterval(updatePepePrice, 10000); // 10000 milliseconds = 10 seconds
-
-            function updateTime() {
-              const currentTime = new Date();
-              const hours = currentTime.getHours().toString().padStart(2, '0');
-              const minutes = currentTime.getMinutes().toString().padStart(2, '0');
-              const seconds = currentTime.getSeconds().toString().padStart(2, '0');
-              const formattedTime = `${hours}:${minutes}:${seconds}`;
-              document.getElementById('current-time').textContent = formattedTime;
-          }
-          
-          // Initial update of the current time
-          updateTime();
-          
-          // Update the current time every second
-          setInterval(updateTime, 1000);
+  
+function updateTime() {
+    const currentTime = new Date();
+    const hours = currentTime.getHours().toString().padStart(2, '0');
+    const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+    const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+    const formattedTime = `${hours}:${minutes}:${seconds}`;
+    document.getElementById('current-time').textContent = formattedTime;
+}
+    updateTime();
+    setInterval(updateTime, 1000);
 
 
-          //grinder animation
-    document.addEventListener('DOMContentLoaded', function() {
-      var linepainting1 = document.querySelector('.linepainting1');
-      var linepainting2 = document.querySelector('.linepainting2');
-    
-      // Function to animate images
-      function animateImages() {
-        linepainting1.style.transform = 'translate(-50%, -100%)'; // Move linepainting1 up
-        linepainting2.style.transform = 'translate(-50%, -0%)'; // Move linepainting2 down
-        setTimeout(function() {
-          // Reverse the animation after 1 second
-          linepainting1.style.transform = 'translate(-50%, -50%)'; // Reset linepainting1 position
-          linepainting2.style.transform = 'translate(-50%, -50%)'; // Reset linepainting2 position
-        }, 1000);
-      }
-    
-      // Call the animateImages function periodically
-      setInterval(animateImages, 2000); // Change the interval as needed
-    });

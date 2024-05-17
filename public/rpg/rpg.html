@@ -8,15 +8,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
+<link href="https://fonts.googleapis.com/css2?family=Nova+Script&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Nova+Script&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Nova+Script&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Jaini+Purva&family=Jersey+25+Charted&family=Nova+Script&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
 <style>
-  body {
+
+
+body {
     background-color: #0a0a23;
+    box-sizing: border-box;
     
   }
 
@@ -35,6 +44,7 @@
     width: 100%;
     height: 100%;
     pointer-events: none; /* Prevent the container from blocking mouse events */
+    z-index: 40;
   }
   @keyframes spark {
     0% {
@@ -46,11 +56,15 @@
       transform: scale(2);
     }
   }
-
+  
+  
  
   #text {
+    font-family: "Nova Script", system-ui;
     background-color: #0a0a23;
     color: #00ff15;
+    max-height: 70px;
+    min-height: 70px;
     text-shadow: 2px 2px black;
     margin-top: 10px;
     padding: 10px;
@@ -73,10 +87,11 @@
 
   #text::selection {
     background-color: lime;
-    color: rgb(242, 255, 0);
+    color: rgb(238, 0, 255);
   }
   
   #game {
+    position: relative; /* Add this line */
     max-width: 500px;
     max-height: 400px;
     background-image: repeating-linear-gradient(var(--a), #0898ff, yellow 10vw);
@@ -104,25 +119,19 @@
     }
   }
 
-  #game::selection{
-    background-color: magenta;
-    color: aqua;
-  }
-  
 
   #stats {
   
     border: 1px solid white;
     padding: 5px;
     color: #000000;
+    
     background-image: radial-gradient(circle farthest-corner at var(--c) var(--d), yellow 0.5em, var(--e) 2.5em);
     animation-name: movecenter;
     animation-direction: alternate;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     animation-duration: 10s;
-
-    
     font-size: 1.6em;
     display: flex;
     justify-content: space-around;
@@ -130,8 +139,10 @@
     font-weight: 400;
     font-style: normal;
     max-height: 200px;
-    cursor:copy;
+    cursor:cell;
+    z-index: 45;
   }
+
 
   @property --c {
     syntax: "<percentage>";
@@ -178,35 +189,70 @@
 
   #xpText{
     color: green;
-    font-family:'Times New Roman', Times, serif;
+    font-family: "Jacquard 12", system-ui;
+    font-size: 24px;
     text-shadow: 1px 1px #000000;
   }
+
   #healthText{
     color: red;
-    font-family:'Times New Roman', Times, serif;
+    font-size: 24px;
+    font-family: "Ubuntu Sans Mono", monospace;
     text-shadow: 1px 1px #000000;
   }
+
+  #statHealth {
+    position: relative;
+  }
+  
+  #statHealth::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  #statHealth:hover::after {
+    opacity: 1;
+  }
+
   #goldText{
-    color: gold;
-    
-    font-family:'Times New Roman', Times, serif;
-    text-shadow: 1px 1px #000000;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    font-style: normal;
+    font-family: "Jaini Purva", system-ui;
+    text-shadow: 1px 1px #ffd500;
   }
  
  .stat span{
-    cursor:pointer;
+    cursor:ne-resize;
+ }
+
+
+ .material-symbols-outlined{
+  vertical-align: middle;
  }
 
  #radio{
     margin: 5px;
     display: flex;
-    
     background-image: url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23swXdGz84t22ApxFSDH2bCEgtm8gT5VCXiBQUc6S6uLR1fR2rrHevE5n5hiDFB96fwuM.gif');
     background-size: contain; /* Adjust the size of the background image */
     background-repeat: repeat; 
+    justify-content: space-between;
     padding: 5px;
     animation: radiodiv 2s ease-in-out 1s infinite;
     animation-direction: alternate;
+    
  }
  @keyframes radiodiv{
     from {
@@ -222,7 +268,7 @@
     font-style: normal;
     background-color: black;
     color: white;
-    animation: radiotext 0.5s ease-in-out 1s infinite;
+    animation: radiotext var(--animation-duration, 2s) ease-in-out 1s infinite;
  }
  @keyframes radiotext{
     0%{
@@ -250,10 +296,36 @@
 }
 
 .slider {
-  width: 100%; /* Make the slider span the full width */
-  background-color: red;
+  -webkit-appearance: none; /* Remove default styles for WebKit browsers */
+  appearance: none; /* Remove default styles for non-WebKit browsers */
+  width: 100%; /* Set width of the slider */
+  height: 10px; /* Set height of the slider */
+  background: #ddd; /* Set background color of the slider track */
+  border-radius: 5px; /* Set border radius to make it rounded */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set initial opacity of the slider */
+  transition: opacity 0.2s; /* Add transition effect for opacity */
 }
 
+/* Customize slider thumb */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default styles for WebKit browsers */
+  appearance: none; /* Remove default styles for non-WebKit browsers */
+  width: 20px; /* Set width of the thumb */
+  height: 20px; /* Set height of the thumb */
+  background: #4800ff; /* Set background color of the thumb */
+  border-radius: 50%; /* Set border radius to make it circular */
+  cursor: ew-resize; /* Change cursor to pointer */
+}
+
+/* Add hover effect to the slider */
+.slider:hover {
+  opacity: 1; /* Change opacity on hover */
+  box-shadow: 0px -10px 5px rgb(153, 255, 0); 
+}
+.slider::-webkit-slider-thumb:hover{
+  box-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
 .fade {
   opacity: 0;
   transition: opacity 1s ease-in-out;
@@ -268,17 +340,19 @@
   
     display: flex;
     position: absolute;
+    top: 470px;
+    left: 280px;
     justify-content: space-around;
-    margin-top: 10px;
-    border-radius: 0%;
+    padding: 20px;
+    border-radius: 15%;
     background-image: repeating-linear-gradient(var(--a), #000000, rgb(255, 0, 30) 2vw);
     animation-name: bgrotate2;
     animation-direction: alternate;
     animation-iteration-count: infinite;
     animation-duration: 30s;
     cursor: grab;
-    margin-bottom: 10px;
-    z-index: 1;
+    
+    z-index: 50;
   }
   @keyframes bgrotate2 {
     from {
@@ -294,12 +368,18 @@
     font-weight: 400;
     font-style: normal;
     font-size: 0.6em;
-    max-height: 30px;
+    height: 40px;
     border-radius: 5%;
-    border: px solid;
-    margin: 10px;
+    box-shadow: 5px 5px 1px rgba(85, 0, 255, 0.7); 
+    margin-right: 4px;
+    padding: 0px;
     background-image: linear-gradient(#aeff00, #ff0d00);
     color: #3c00ff;
+    position: relative;
+  z-index: 2;
+ }
+ .button :nth-child(3){
+  margin-right: 0px;
  }
  .button:hover{
     border: 2px solid black;
@@ -307,6 +387,7 @@
     color: #000000;
     background-color: #32fe54;
     background-image: linear-gradient(#15ff00, #003cff);
+    box-shadow: 3px 3px 1px rgba(255, 247, 0, 0.7); 
  }
   
 
@@ -314,6 +395,7 @@
 
 #monsterStats {
     display: none;
+    font-family: "Share Tech Mono", monospace;
     border: 1px solid #0a0a23;
     padding: 5px;
     color: black;
@@ -323,6 +405,17 @@
     animation-iteration-count: infinite;
     animation-duration: 2s;
   }
+
+  #monsterName{
+    font-size: 18px;
+    background-color: rgb(0, 0, 0);
+    color: lime;
+  }
+  #monsterHealth{
+    font-size: 18px;
+    background-color: red;
+    color: pink;
+  }
   @keyframes bgrotate2 {
     from {
       --a: 435deg;
@@ -331,6 +424,32 @@
       --a: 315deg;
     }
   }
+
+#moving_rhoms{
+  margin: 0 auto;
+  z-index: 3;
+  position: absolute;
+  pointer-events: none;
+  max-height: 100px;
+  max-width: 500;
+  
+  display: flex;
+  flex-direction: row;
+}
+#moving_rhoms img{
+  max-height: 150px;
+  margin: 0px;
+  
+  animation: rhomMove 4s infinite;
+}
+
+@keyframes rhomMove{
+  0%{margin: 0px;}
+  25%{margin: 10px;}
+  50%{}
+  75%{}
+  100%{margin: 0px;}
+}
 
   .locationBackgrounds{
     width: 100%;
@@ -369,7 +488,7 @@
     height: 100px;
     margin: 30px auto;
     justify-content: center;
-    z-index: -1;
+   
     
   }
 
@@ -391,6 +510,7 @@
     animation: bluesky 2s ease-in-out 1s infinite;
     display: flex;
     
+    
   }
 
   .cloud{
@@ -398,18 +518,300 @@
     width: calc(100%/3);
     height: 50%;
     border-radius: 50%;
-    animation: cloud 4s ease-in-out 1s infinite;
+    animation: cloud 3s linear 1s infinite;
   }
 
+  .movingshapes{
+    position: relative;
+background-color: black;
+width: 100px;
+height: 30px;
+
+  }
+
+  #fourShapes{
+    width: 40px;
+    height: 40px;
+    background: black;
+  }
+  #shape1{}
+  #shape2{}
+  #shape3{}
+  #shape4{}
+
+  #imageChanger {
+    position: absolute;
+    top: 150px; 
+    left: 70%; 
+    width: 100px; 
+    height: 100px; 
+    border: 2px solid black; 
+    background-image: url("https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJd9nWfeJCAPtTcmb1KQAfJUnSyzXVZXHQ6qq92hsEvN7LrJHW3beqW8cAkkDdS.gif");
+    background-size: cover; 
+    cursor: pointer; 
+    z-index: 3;
+    animation: scaleUp 2s linear 1s infinite alternate;
+   
+  }
+  @keyframes scaleUp {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.1);
+    }
+}
+
+.grinder {
+  position:absolute;
+  z-index: -1;
+  left: 100px;
+  top: 250px;
+  animation: moveUp 30s linear infinite;
+  pointer-events: none;
+  
+}
+.grinder2 {
+  position:absolute;
+  z-index: -1;
+  left: 100px;
+  top: 250px;
+  animation: moveUp 30s linear infinite reverse;
+  pointer-events: none;
+}
+
+#linepainting1{
+  width: 310px;
+  height: 200px;
+}
+#linepainting2{
+  width: 310px;
+  height: 200px;
+}
+@keyframes moveUp{
+  0%{
+    top: 250px;
+  }
+  25%{
+    top:100px
+  }
+  50%{
+    top: 250px;
+  }
+  75%{
+    top: 300px;
+  }
+  100%{
+    top: 250px;
+  }
+}
+
+  #imageChangerBottom{
+    position: absolute;
+    top: 300px; 
+    left: 20%; 
+    width: 50%; 
+    height: 200px; 
+    border: none;  
+    background-size: cover; 
+    cursor: pointer; 
+    pointer-events: none;
+    overflow-x: hidden;
+    animation: rotateAndScale 8s ease infinite; 
+  }
+  @keyframes rotateAndScale {
+    0% {
+        transform: translateY(0px) rotate(0deg) scale(0.8);
+    }
+    50% {
+        transform: translateY(-180px) rotate(180deg) scale(1.5);
+        opacity:0.5;
+    }
+    100% {
+        transform: translateY(0px) rotate(360deg) scale(0.8);
+    }
+}
+
+#anibottom1{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  margin: 0 auto;
+  top: 100px;
+  overflow-x: hidden;
+  animation: rotateSmall 4s ease infinite;
+}
+@keyframes rotateSmall{
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(0.8);
+}
+50% {
+    transform: translateY(-180px) rotate(-360deg) scale(1.5);
+    opacity: 0;
+}
+100% {
+    transform: translateY(0px) rotate(360deg) scale(0.8);
+}
+}
+
+#weaponImages {
+  display: flex;
+  flex-direction: row-reverse; /* Use flexbox */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  position: absolute; /* Position the container absolutely */
+    top: 400px; /* Adjust the top position as needed */
+    right: 35px; 
+    z-index: 3;
+    
+}
+
+.weapon-image {
+  width: 70px; /* Adjust width as needed */
+  height: 70px; /* Adjust height as needed */
+  margin-right: 10px; /* Adjust margin as needed */
+  
+    transition: transform 3s ease;
+}
+.weapon-image:nth-child(1) {
+  transform-origin: center;
+}
+
+.weapon-image:nth-child(2) {
+  transform-origin: center;
+}
+.weapon-image:nth-child(3) {
+  transform-origin: center;
+}
+
+.weapon-image:nth-child(4) {
+  transform-origin: center;
+}
+.weapon-image:hover {
+  transform: rotateZ(360deg); /* Rotate the image 360 degrees on hover */
+}
+#earth{
+  position:absolute;
+  left: 50%;
+  top: 12px;
+  width: 20px;
+  height: 20px;
+  background-image: url("https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJhTA7inahYcFUPKkNENYg2upgdCaq7EXaVMg87Qavn3JuaXG7DWfVDXv87N9DL.png");
+  background-size: cover;
+  animation: orbit 22s infinite;
+  z-index: 3;
+}
+
+@keyframes orbit {
+  0% {
+    
+    transform: scale(1.7);
+  }
+  25%{
+    
+    left: 5%;
+    transform: scale(1);
+    opacity: 70%;
+    animation-timing-function: ease-in-out;
+  }
+  50% {
+    transform: scale(0.5);
+    left: 50%; 
+    opacity: 25%;
+    top: 0px;
+    animation-timing-function: linear;
+  }
+  75%{
+    left: 95%;
+    transform: scale(1);
+    opacity: 70%;
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: scale(1.7);
+    left: 50%;
+    animation-timing-function: linear;
+  }
+}
+
   #bottombox{
-    background-color: rgb(74, 120, 0);
+    background-color: transparent;
     width: 500px;
     height: 180px;
     z-index: 5;
     margin: 10px auto 5px;
+    z-index: 100;
 
     
   }
+
+  #crypto-container {
+    position: relative;
+    
+}
+
+#crypto-prices {
+  position: absolute;
+  top: 5px; /* Adjust this value as needed to move the prices div up */
+  left: 0;
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: lime;
+  border: 1px solid lime;
+  border-radius: 5px;
+  z-index: 1;
+  animation: pulseBackground 0.4s infinite alternate;
+}
+@keyframes pulseBackground {
+  0% {
+      background-color: black;
+  }
+  100% {
+      background-color: #333; /* Gray color */
+  }
+}
+
+.pepe-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.pepe-price {
+    font-size: 18px;
+    margin: 0; /* Remove default margins */
+    padding-right: 10px;
+    font-family: "Share Tech Mono", monospace;
+}
+
+#time-container{
+  position: relative;
+}
+
+#time {
+  position: absolute;
+  top: 5px; /* Adjust this value as needed to move the prices div up */
+  left: 0;
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: lime;
+  border: 1px solid lime;
+  border-radius: 5px;
+  font-family: "Share Tech Mono", monospace;
+  z-index: 1;
+  animation: pulseBackground 0.1s infinite alternate;
+  cursor: url(https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23u677C5aFQJ5ZeHcXfPLPCkeHmCQBj47jQW3faVmpc164qy9f6PE67Urx8tQca297y3G.gif),auto;
+}
+.time-clock{
+  margin-right: 5px;
+  margin-left: 5px;
+}
+#current-time{
+  font-size: 12px;
+  margin: 0;
+}
 
   #bg-triangle{
     height: 20%;
@@ -473,7 +875,7 @@
   
   @-webkit-keyframes spin {
     from {                                     }
-    to   { -webkit-transform: rotateZ(360deg); }
+    to   { -webkit-transform: rotateZ(720deg); }
   }
   
   /* keyframes definition for other browsers */
@@ -484,12 +886,12 @@
   }
   
   @keyframes bounce {
-    from, to  { border-radius: 50%;
+    from, to  { border-radius: 0px;
       bottom: 0;
       animation-timing-function: ease-out;
     }
-    50% {border-radius: 0px;
-      bottom: 220px;
+    50% {border-radius: 50%;
+      bottom: var(--bounce-bottom);
       animation-timing-function: ease-in;
     }
   }
@@ -510,9 +912,6 @@
   }
   
   /* styles for the stage and animated elements */
-  
-  
-  
   #traveler {
     position:relative;
     width: 20px;
@@ -533,16 +932,18 @@
   
   #bouncer {
     position: absolute;
+    cursor: help;
     width: 20px;
     height: 20px;
-    border: 2px solid;
+    border: 2px solid rgb(0, 144, 43);
     border-radius: 10px;
     background: rgb(0, 0, 252);
+    z-index: 2;
     background: -webkit-radial-gradient(60% 40%, circle, rgba(26, 255, 0, 0.8), rgb(140, 0, 255) 50%) red;
     background: -moz-radial-gradient(60% 40%, circle, rgba(255,255,255,0.8), rgb(98, 255, 0) 50%) red;
     background: -o-radial-gradient(60% 40%, circle, rgba(255, 255, 255, 0.8), red 50%) red;
     background: -ms-radial-gradient(60% 40%, circle, rgba(255,255,255,0.8), red 50%) red;
-    background: radial-gradient(60% 40%, circle, rgba(0, 255, 17, 0.8), red 50%) red;
+    background: radial-gradient(60% 40%, circle, rgba(0, 255, 17, 0.8), rgb(255, 0, 179) 50%) red;
   
     -webkit-animation-name: bounce, spin;
     -webkit-animation-iteration-count: infinite;
@@ -550,8 +951,31 @@
   
     animation-name: bounce, spin;
     animation-iteration-count: infinite;
-    animation-duration: 4.2s;
+    animation-duration: 2.2s;
+
+    
   }
+
+  :root {
+    --random-min: 180; /* Minimum value */
+    --random-max: 220; /* Maximum value */
+    --bounce-bottom: calc(var(--random-min)px + (var(--random-max) - var(--random-min)) * random());
+  }
+
+  #balltrail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .ball-trail-spark {
+    width: 16px; /* Adjust the width of the ball trail spark */
+    height: 6px; /* Adjust the height of the ball trail spark */
+    background-color: rgba(0, 255, 251, 0.5); /* Adjust the color and opacity of the ball trail spark */
+  }
+
 
   @keyframes bluesky {
     0% {
@@ -610,23 +1034,43 @@
   <body>
     <div id="mousesparks"></div>
     <audio id="random-sound-effect"></audio>
-    <audio id="game-over-sound" src="https://opengameart.org/sites/default/files/game_over_bad_chest.wav"></audio>
+    <audio id="game-over-sound" src="https://opengameart.org/sites/default/files/snd_oh.mp3"></audio>
     <audio id="cave-sound" src="https://opengameart.org/sites/default/files/magic_words.wav"></audio>
-    <audio id="buy-health" src="https://opengameart.org/sites/default/files/health_restore.wav"></audio>
-    <audio id="go-to-store" src="https://opengameart.org/sites/default/files/positive_0.ogg"></audio>
+    <audio id="buy-health" src="https://opengameart.org/sites/default/files/alien_jump_voice.wav"></audio>
+    <audio id="buy-weapon" src="https://opengameart.org/sites/default/files/letsbuild.mp3"></audio>
+    <audio id="go-to-store" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
     <audio id="go-to-town" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
+    <audio id="kill-monster" src="https://opengameart.org/sites/default/files/fuck.mp3"></audio>
+    <audio id="fight-slime" src="https://opengameart.org/sites/default/files/snd_frog_attack.mp3"></audio>
+    <audio id="fight-beast" src="https://opengameart.org/sites/default/files/beast.mp3"></audio>
+    <audio id="fight-artist" src="https://opengameart.org/sites/default/files/extra_life_sound_new.mp3"></audio>
+    <audio id="attack" src="https://opengameart.org/sites/default/files/electric_spark.mp3"></audio>
+    <audio id="wiff" src="https://opengameart.org/sites/default/files/damn.mp3"></audio>
+    <audio id="dodge" src="https://opengameart.org/sites/default/files/jump_0.flac"></audio>
+    <audio id="coin" src="https://opengameart.org/sites/default/files/snd_pickupcoin.mp3"></audio>
+    <audio id="lose" src="https://opengameart.org/sites/default/files/snd_oh.mp3"></audio>
+
+   
+
+    <div id="controls">
+      <button id="button1" class="button">Buy</button>
+      <button id="button2" class="button">Grow</button>
+      <button id="button3" class="button">Artist</button>
+    </div>
     
     
+
+
   <div id="game">
       <div id="stats">
-        <span class="stat">
-                XP: <strong><span id="xpText">0</span></strong>
+        <span class="stat" id="statXP">
+                &#129516 XP: <strong><span id="xpText">0</span></strong>
             </span>
-        <span class="stat">
-            Health: <strong><span id="healthText">100</span></strong>
+        <span class="stat" id="statHealth">
+            &#129385 Health: <strong><span id="healthText">100</span></strong>
         </span>
 
-        <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
+        <span class="stat" id="statGold">&#128184 Gold: <strong><span id="goldText">50</span></strong></span>
 
       </div>
       
@@ -634,17 +1078,23 @@
         
         <button id="playButton1" class="playButton"><span class="material-symbols-outlined">
           play_circle
-          </span>Radio</button>
+          </span></button>
         <audio id="radioPlayer1" class="fade" src="https://radiok.broadcasttool.stream/play_128" type="audio/mpeg"></audio>
 
 
-        <button id="playButton2" class="playButton">Play Radio</button>
+        <button id="playButton2" class="playButton"><span class="material-symbols-outlined">
+          play_circle
+          </span></button>
         <audio id="radioPlayer2" class="fade" src="http://krui.student-services.uiowa.edu:8000/listen" type="audio/mpeg"></audio>
 
-        <button id="playButton3" class="playButton">Play Radio</button>
+        <button id="playButton3" class="playButton"><span class="material-symbols-outlined">
+          play_circle
+          </span></button>
         <audio id="radioPlayer3" class="fade" src="https://streams.wtju.net/wxtj-live.mp3" type="audio/mpeg"></audio>
 
-        <button id="playButton4" class="playButton">Play Radio</button>
+        <button id="playButton4" class="playButton"><span class="material-symbols-outlined">
+          play_circle
+          </span></button>
         <audio id="radioPlayer4" class="fade" src="https://das-edge11-live365-dal03.cdnstream.com/a45877" type="audio/mpeg"></audio>
 
       </div>
@@ -652,15 +1102,19 @@
         <input type="range" min="0" max="3" value="0" class="slider" id="station-slider">
       </div>
 
-      <div id="controls">
-        <button id="button1" class="button">Go to Store</button>
-        <button id="button2" class="button">Go into a Cave</button>
-        <button id="button3" class="button">Fight the Artist</button>
+    
+      
+
+      <div id="moving_rhoms">
+        <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKGZMkMgZPMGsfzn8yxDAF7UtRwxMKdjPoT6jMavmdp2GUAYGVxEu1XCfsVJG2x.gif">
+        <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3eEzT8L3b8y66rSUmrz2GXH3SkKq8A48cy7vsWcdTB2fzZtcRmcWVZ2p1ukjP.gif">
+        <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKGZMkMgZPMGsfzn8yxDAF7UtRwxMKdjPoT6jMavmdp2GUAYGVxEu1XCfsVJG2x.gif">
+        <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3eEzT8L3b8y66rSUmrz2GXH3SkKq8A48cy7vsWcdTB2fzZtcRmcWVZ2p1ukjP.gif">
+        <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKGZMkMgZPMGsfzn8yxDAF7UtRwxMKdjPoT6jMavmdp2GUAYGVxEu1XCfsVJG2x.gif">
+
       </div>
-      <div id="monsterStats">
-        <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
-        <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
-      </div>
+
+
 
     <div id="town-square" class="locationBackgrounds">
             <div id="sky">
@@ -668,16 +1122,40 @@
                 <div class="cloud"></div>
                 <div class="cloud"></div>
             </div>
+
+      <div id="movingshapes">
+        <div class="fourShapes" ></div>
+        <div class="fourShapes" ></div>
+        <div class="fourShapes" ></div>
+        <div class="fourShapes" ></div>
+      </div>
         
       <div id="scene">
-        <div class="anibox">fff</div>
-        <div class="anibox">gggg</div>
-        <div class="anibox">aaaa</div>
+        
+        <div class="anibox">zz</div>
+        <div class="anibox">gg</div>
+        <div class="anibox">gg</div>
     </div>
     
-    
+    <div id="imageChangerBottom">
+      <div id = "anibottom1"></div>
+    </div>
       
+
+
 </div>
+<div id="monsterStats">
+  <span class="stat">Painting: <strong><span id="monsterName"></span></strong></span>
+  <span class="stat">Areas that need finishing: <strong><span id="monsterHealth"></span></strong></span>
+</div>
+
+<div class="grinder">
+  <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3dxBkjgRHKnHjAortz5bKhCowY8KicU23biGusM7xQSCumuhG2kqkmN6uhi3a.gif" alt="Image 1" id="linepainting1">
+</div>
+<div class="grinder2">
+  <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJoHf2vGSxDtGQAMQVCtFYccC9beMJKbhS2LmT1L61agxUQk69JFnsMcwGmkZzc.gif" alt="Image 2" id="linepainting2">
+</div>
+
       <div id="text">
         Welcome to God Mode. You must defeat the artist that is preventing people from achieving spiritual enlightenment. You are at home on the couch. Where do you want to go? Use the buttons above.
       </div>
@@ -686,22 +1164,51 @@
 
     </div>
 
+    <div id="imageChanger"></div>
+    
+
     <div id="bottombox">
-     
-      <div id="bg-triangle"></div>
+      
+      <div id="bg-triangle">
+        <div id="time-container">
+          <div id="time">
+            <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23u677C5aFQJ5ZeHcXfPLPCkeHmCQBj47jQW3faVmpc164qy9f6PE67Urx8tQca297y3G.gif" alt="clock gif" class="time-clock">
+            <p id="current-time"></p>
+          </div>
+        </div>
+      </div>
       <div id="bg-checker"></div>
       <div id="bg-pyramid"></div>
-      <div id="bg-honeycomb"></div>
+      <div id="bg-honeycomb">
+        <div id="crypto-container">
+          <div id="crypto-prices">
+              <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/EoGqh59VuD8CC52scAPbNfhxddX17D499PWo4ZQ9tqmJ87CTBgmkvysMyXdDpz3FUHN.gif" alt="Pepe Logo" class="pepe-logo">
+              <p class="pepe-price" id="pepe-price"></p>
+          </div>
+      </div>
+          </div>
+      </div>
+
+      <div id ="earth"></div>
+      
       <div id="stage">
-        <div id="traveler">
+        <div id="traveler"><div id="balltrail"></div>
           <div id="bouncer"><!-- be the ball --></div>
         </div>
       </div>
+
+      <div id="weaponImages" class="weapon-image">
+        <!-- Each image placeholder will be dynamically populated -->
     </div>
+
+    </div>
+    
     
   
     
-    <script>let xp = 0;
+   
+    <script>
+      let xp = 0;
 let health = 100;
 let gold = 50;
 let currentWeapon = 0;
@@ -730,70 +1237,71 @@ const weapons = [
 ];
 const monsters = [
   {
-    name: "slime",
+    name: "green slime",
     level: 2,
     health: 15
   },
   {
-    name: "fanged beast",
+    name: "textured beast",
     level: 8,
     health: 60
   },
   {
-    name: "dragon",
+    name: "masterpiece",
     level: 20,
     health: 300
   }
 ]
+
 const locations = [
   {
     name: "town square",
-    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    "button text": ["Store", "Train", "Artist"],
     "button functions": [goStore, goCave, fightDragon],
-    text: "You are in the town square. You see a sign that says \"Store\".",
-    imageUrl: "https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23vho7jxcXZiQpdgJ6ukjFVFj6dC6QwJLRdLJmtTDyiHnT8PJmcoonnavPQpcSrnz6SBz.gif"
+    text: "You are in the town Plaza. Lots of people walking around in a hypnotized daze. You want nothing to do with any of them. You are on a mission. Focus. You see a sign that says \"Store\"."
   },
   {
     name: "store",
-    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go outside"],
+    "button text": ["food", "Stimulant", "go Outside"],
     "button functions": [buyHealth, buyWeapon, goTown],
-    text: "You enter the store."
+    text: "You enter the store. You see a bunch of weird stuff for sale. There is only one thing that can help you fight evil, and thats coffee or tea. You also see some unprocessed food from a small organic farm nearby."
   },
   {
     name: "cave",
-    "button text": ["Fight slime", "Fight leopard", "Go to town"],
+    "button text": ["Paint", "Code", "Skate"],
     "button functions": [fightSlime, fightBeast, goTown],
-    text: "You enter the cave. You see some monsters."
+    text: "You enter your mind. The walls are covered with paintings and life force codes to eternal existance. You see someone who looks like it hasnt read a book in a while. go in the sun for a while. You ponder if you should skate, paint or code."
   },
   {
     name: "fight",
-    "button text": ["Attack", "Dodge", "Run"],
+    "button text": ["Engage", "Smoke", "Quit"],
     "button functions": [attack, dodge, goTown],
-    text: "You are fighting a monster."
+    text: "You havent painted in months. You arnt even sure if you know how to paint anymore. Go ahead, smoke another cig and think about why you haven't been as productive as you want to be."
   },
   {
     name: "kill monster",
-    "button text": ["Go to town square", "Go to town square", "Go to town square"],
+    "button text": ["Go to Plaza", "Go to Plaza", "Go Skate"],
     "button functions": [goTown, goTown, goTown],
-    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+    text: 'The monster screams "Faaaaack!" as it dies. You gain experience points and find some gold in the air.'
+    
   },
   {
     name: "lose",
-    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button text": ["Earth?", "Earth?", "Earth?"],
     "button functions": [restart, restart, restart],
-    text: "You die. &#x2620;"
+    text: "You died. &#x2620; You did not build up enough motivation to complete the painting. The earth will move forward without you now. Look forward to reincarnating on a planet similar to earth 40 years from now, or give it another go here on earth."
   },
   { 
     name: "win", 
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"], 
     "button functions": [restart, restart, restart], 
-    text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;" 
+    text: "You defeated the Master Artist Zack Goulet! YOU WIN THE GAME! &#x1F389; YOU ARE GOATED" 
   },
   {
     name: "easter egg",
-    "button text": ["2", "8", "Go to town square?"],
+    "button text": ["2", "8", "Too scared"],
     "button functions": [pickTwo, pickEight, goTown],
-    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
+    text: "You find a secret game within a game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
   }
 ];
 
@@ -812,21 +1320,59 @@ function update(location) {
   button3.onclick = location["button functions"][2];
   text.innerHTML = location.text;
 
+  
+
   switch (location.name) {
-    case "town square":
-      playLocationSound("go-to-town");
-      break;
     case "store":
+      document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJhZ2p6xMK9CE2QX4RQVdsCyrwJSEuHe3amVHMK96ix5h4mZZSyAWNr7vZAnGKn.png')";
+      document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23tb68cYpUaoVjvcPL1x4LQPZ5jnL6J2DbVRNhYpsLFpBfged5RGmYWgtbYVQbyaRMQbt.gif')";
       playLocationSound("store-sound");
       break;
-    case "lose":
-      playLocationSound("game-over-sound");
+    case "cave":
+      document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3ddr7TDkEw5tkauvtTFRH2u2egRwMcgMpspXicxBnVC1CMPDbZiNbnjcieKo5.png')";
+      document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23t798T4WFLrv82yKH1BdxzEaAuV72AAigosbu1XYCR7na3zVcz9JYSkDWLaqd6LmkvPo.gif')";
       break;
-    
-    // Add cases for other locations as needed
+    case "town square":
+      document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJg6R757ydUTPwbdWaGwBSURS6pTkRKNFg8NLmXgt3fWi97qp1U1rCMEpLaiBFx.png')";
+      document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23uFMbmuB7AgotzqFGV9P32WXXWaB9WZmABgZKeXz9bxW68geMB9bsmd2iaXkdBBqaAvu.gif')";
+      playLocationSound("go-to-town");
+      break;
+
+      case "kill monster":
+        document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKKRrVKntmmY6QVsqU2GySGTDShDf3DKN5sbLrLP14wdHA2539UBj9VyZouDF71.gif')";
+        document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23tkZTu2P3KA6qbLivLBfWNQAK4hA31RgE8YeRGfGBZ6BF7PMxb8meLXRFxgNjsjHFatJ.gif')";
+        playLocationSound("kill-monster");
+        break;
+
+    case "lose":
+      document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKRADg7VcVgZKZwFZku43oxgJnkWPJSt5Q84MtSssMTMtPjuUVo3sQUs1YHGv21.gif')";
+      document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/Ep1QdYpk1E5WFJoYV2qANGAeHBagRegT9aoBTjE9h9BZymfs77Yy4KKTHDdi3nuBV7g.gif')";
+      playLocationSound("lose");
+      break;
+
+      case "fight":
+      // Update image based on the monster being fought
+      switch (fighting) {
+        case 0: // Slime
+          document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3ZjQbGCoLK2oXdMJg3em6KMmgpaPcEwkPHkQzTGTf8LCdJasQNGZWyoD5avs8.PNG')";
+          playLocationSound("fight-slime");
+          break;
+        case 1: // Leopard Fanged Beast
+          document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJkLb5bwKCry1wc5BbXVkEMzjs1R2Z6aEy4cmZCT4tV2QwiT4hi4q5pNZmCcvon.PNG')";
+          playLocationSound("fight-beast");
+          break;
+        case 2: // Dragon Master Artist
+          document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJYzse1c2uspWwJsvKccWuUdxwpkmJA7BQrEwZyn6Am5siTr9psbpWZop7goc6w.png')";
+          playLocationSound("fight-artist");
+          break;
+        default:
+         
+          break;
+      }
+      break;
+
     default:
-      // If there's no specific sound for the current location
-      // do nothing or play a default sound
+      // Set a default image or do nothing if the location doesn't require a specific image
   }
  
 }
@@ -842,10 +1388,12 @@ function playLocationSound(soundId) {
 
 function goTown() {
   update(locations[0]);
+  playLocationSound("go-to-town");
 }
 
 function goStore() {
   update(locations[1]);
+  playLocationSound("go-to-store");
 }
 
 function goCave() {
@@ -861,7 +1409,8 @@ function buyHealth() {
     healthText.innerText = health;
     playLocationSound("buy-health");
   } else {
-    text.innerText = "You do not have enough gold to buy health.";
+    text.innerText = "You do not have enough gold to buy such high quality food.";
+    playLocationSound("wiff"); 
   }
 }
 
@@ -875,13 +1424,17 @@ function buyWeapon() {
       text.innerText = "You now have a " + newWeapon + ".";
       inventory.push(newWeapon);
       text.innerText += " In your inventory you have: " + inventory;
+      playLocationSound("buy-weapon");
+      updateWeapon();
     } else {
-      text.innerText = "You do not have enough gold to buy a weapon.";
+      text.innerText = "You do not have enough gold to buy a the stuff you need to succeed.";
+      playLocationSound("wiff"); 
     }
   } else {
     text.innerText = "You already have the most powerful weapon!";
     button2.innerText = "Sell weapon for 15 gold";
     button2.onclick = sellWeapon;
+    playLocationSound("coin");
   }
 }
 
@@ -892,6 +1445,7 @@ function sellWeapon() {
     let currentWeapon = inventory.shift();
     text.innerText = "You sold a " + currentWeapon + ".";
     text.innerText += " In your inventory you have: " + inventory;
+    updateWeapon();
   } else {
     text.innerText = "Don't sell your only weapon!";
   }
@@ -922,12 +1476,14 @@ function goFight() {
 
 function attack() {
   text.innerText = "The " + monsters[fighting].name + " attacks.";
-  text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
+  text.innerText += " You engage the painting with your " + weapons[currentWeapon].name + "."+ " It appears somewhat effective, but there is more work still to do. This wont end tonight. You stay focused and fall into a mild flow state.";
   health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
-    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
+    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1; 
+    playLocationSound("attack");   
   } else {
-    text.innerText += " You miss.";
+    text.innerText += " You hesitated, got distracted, and missed the mark. The Universe doubts your abilities. Now you are scared for your future.";
+    playLocationSound("wiff");   
   }
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
@@ -943,6 +1499,7 @@ function attack() {
   if (Math.random() <= .1 && inventory.length !== 1) {
     text.innerText += " Your " + inventory.pop() + " breaks.";
     currentWeapon--;
+    updateWeapon();
   }
 }
 
@@ -957,7 +1514,8 @@ function isMonsterHit() {
 }
 
 function dodge() {
-  text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+  text.innerText = "You cant stop thinking about the  " + monsters[fighting].name + ". You begin to feel a mix of overstimulated exhaustion. You try to admire nature, but your mind wont stop revolving around this " + monsters[fighting].name + " thing.";
+  playLocationSound("dodge");
 }
 
 function defeatMonster() {
@@ -1023,53 +1581,60 @@ function pick(guess) {
   }
 }
 
+
+
+function updateWeapon() {
+  const weaponImagesDiv = document.getElementById('weaponImages');
+  weaponImagesDiv.innerHTML = ''; // Clear previous images
+
+  inventory.forEach(weapon => {
+      const img = document.createElement('img');
+      img.src = getWeaponImageUrl(weapon); // Function to get the URL based on weapon name
+      img.alt = weapon;
+      img.classList.add('weapon-image'); // Add a class for styling
+      weaponImagesDiv.appendChild(img);
+  });
+}
+
+// Function to get the URL of the weapon image based on its name
+function getWeaponImageUrl(weaponName) {
+  // Add logic to map weapon names to their corresponding image URLs
+  switch (weaponName) {
+      case 'stick':
+          return 'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJd9jzVoQdKs4nqtcfR9VW1xQEDVGfV8ZZ47DLe5hWvhHmzMa8oswRPfmVsMKXW.PNG'; // Replace with the actual URL of the stick image
+      case 'dagger':
+          return 'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJd95u7RKRrwbDkg9fEeMwWRvgp4qGqJP1Fzb984qAeGb1RY5g6tL3AiTFVEa19.PNG'; // Replace with the actual URL of the dagger image
+      case 'claw hammer':
+          return 'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJhURRCfJwGCQqhQ8rD8fao9jPx2FwrZ3kRXGPTdVV29ZzPBxQvGqzEEEBM4TkR.PNG'; // Replace with the actual URL of the dagger image
+      case 'sword':
+          return 'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJmnWj1Yf1wf9oirhwTWLh5Q1HWkTVzrSPcZFo7bmoVNq9LvGoXjeTpsG1GfSYB.PNG'; // Replace with the actual URL of the dagger image
+      // Add cases for other weapons as needed
+      default:
+          return 'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJd9SKiZ9Y1aekQ2CE6k73ACRFyAKWq7XefJ4H7ZfRxpW3txmvCYGHRt8gT51wP.GIF'; // Replace with a default image URL
+  }
+}
+
+// Call updateWeapon() at the beginning of the game to initialize the inventory
+updateWeapon();
+
 //sounds
 //#region
-const playButton1 = document.getElementById('playButton1');
-const radioPlayer1 = document.getElementById('radioPlayer1');
-const playButton2 = document.getElementById('playButton2');
-const radioPlayer2 = document.getElementById('radioPlayer2');
-const playButton3 = document.getElementById('playButton3');
-const radioPlayer3 = document.getElementById('radioPlayer3');
-const playButton4 = document.getElementById('playButton4');
-const radioPlayer4 = document.getElementById('radioPlayer4');
+const radioButtons = document.querySelectorAll('.playButton');
 
-playButton1.addEventListener('click', () => {
-    if (radioPlayer1.paused) {
-        radioPlayer1.play();
-        playButton1.innerText = 'Pause Radio';
-    } else {
-        radioPlayer1.pause();
-        playButton1.innerText = 'Play Radio';
-    }
-});
-
-playButton2.addEventListener('click', () => {
-    if (radioPlayer2.paused) {
-        radioPlayer2.play();
-        playButton2.innerText = 'Pause Radio';
-    } else {
-        radioPlayer2.pause();
-        playButton2.innerText = 'Play Radio';
-    }
-});
-playButton3.addEventListener('click', () => {
-    if (radioPlayer3.paused) {
-        radioPlayer3.play();
-        playButton3.innerText = 'Pause Radio';
-    } else {
-        radioPlayer3.pause();
-        playButton3.innerText = 'Play Radio';
-    }
-});
-playButton4.addEventListener('click', () => {
-    if (radioPlayer4.paused) {
-        radioPlayer4.play();
-        playButton4.innerText = 'Pause Radio';
-    } else {
-        radioPlayer4.pause();
-        playButton4.innerText = 'Play Radio';
-    }
+// Toggle play/pause for radio buttons
+radioButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        const radioPlayer = radioPlayers[index]; // Access the corresponding audio player using the index
+        if (radioPlayer.paused) {
+            radioPlayer.play();
+            button.innerHTML = '<span class="material-symbols-outlined">pause_circle</span>';
+            button.style.setProperty('--animation-duration', '0.5s'); // Set animation duration for the current button
+        } else {
+            radioPlayer.pause();
+            button.innerHTML = '<span class="material-symbols-outlined">play_circle</span>';
+            button.style.setProperty('--animation-duration', '2s'); // Reset animation duration for the current button
+        }
+    });
 });
 //#endregion
 
@@ -1091,6 +1656,8 @@ const soundSources = [
     'https://opengameart.org/sites/default/files/slime_jump_0.mp3',
     'https://opengameart.org/sites/default/files/jump_0.flac'
     
+    
+    
 ];
 
 mouseOverSoundButtons.forEach(button => {
@@ -1102,6 +1669,27 @@ mouseOverSoundButtons.forEach(button => {
     });
 });
 
+//controls buttons
+// Array containing URLs to the three sound files
+const soundUrls = [
+  'https://opengameart.org/sites/default/files/174.mp3',
+  'https://opengameart.org/sites/default/files/285.mp3',
+  'https://opengameart.org/sites/default/files/396.mp3',
+  'https://opengameart.org/sites/default/files/417.mp3',
+  'https://opengameart.org/sites/default/files/528.mp3'
+];
+
+// Loop through all elements with the class 'button' and add a mouseover event listener to each
+document.querySelectorAll('.button').forEach(button => {
+  button.addEventListener('mouseover', () => {
+      // Choose a random index from 0 to 2 (inclusive) to select one of the sound URLs
+      const randomIndex = Math.floor(Math.random() * soundUrls.length);
+      // Create an Audio object for the randomly chosen sound
+      const buttonSound = new Audio(soundUrls[randomIndex]);
+      // Play the randomly chosen sound
+      buttonSound.play();
+  });
+});
 //#endregion
 
 //#region radio slider
@@ -1134,29 +1722,43 @@ function pauseAllRadios() {
 
 //#region draggable controls
 const movableDiv = document.getElementById('controls');
+let initialX, initialY;
 let offsetX, offsetY;
 let isDragging = false;
 
 movableDiv.addEventListener('mousedown', startDrag);
-document.addEventListener('mousemove', drag);
-document.addEventListener('mouseup', endDrag);
 
 function startDrag(e) {
   isDragging = true;
-  offsetX = e.clientX - movableDiv.getBoundingClientRect().left;
-  offsetY = e.clientY - movableDiv.getBoundingClientRect().top;
+  initialX = e.clientX;
+  initialY = e.clientY;
+  offsetX = movableDiv.getBoundingClientRect().left;
+  offsetY = movableDiv.getBoundingClientRect().top;
   movableDiv.style.cursor = 'grabbing';
+  document.addEventListener('mousemove', drag);
+  document.addEventListener('mouseup', endDrag);
+  e.preventDefault(); // Prevent default behavior during dragging
 }
 
 function drag(e) {
   if (!isDragging) return;
-  movableDiv.style.left = e.clientX - offsetX + 'px';
-  movableDiv.style.top = e.clientY - offsetY + 'px';
+  
+  let newX = e.clientX - initialX + offsetX;
+  let newY = e.clientY - initialY + offsetY;
+  
+  // Set new position with respect to boundaries
+  newX = Math.max(0, Math.min(newX, window.innerWidth - movableDiv.offsetWidth));
+  newY = Math.max(0, Math.min(newY, window.innerHeight - movableDiv.offsetHeight));
+  
+  movableDiv.style.left = newX + 'px';
+  movableDiv.style.top = newY + 'px';
 }
 
 function endDrag() {
   isDragging = false;
   movableDiv.style.cursor = 'grab';
+  document.removeEventListener('mousemove', drag);
+  document.removeEventListener('mouseup', endDrag);
 }
 
 //#endregion
@@ -1164,6 +1766,10 @@ function endDrag() {
 document.addEventListener('mousemove', function(event) {
   createSpark(event.clientX, event.clientY);
 });
+
+
+
+
 
 function createSpark(x, y) {
   const spark = document.createElement('div');
@@ -1178,6 +1784,90 @@ function createSpark(x, y) {
   });
 }
 
-</script>
+document.documentElement.style.setProperty('--bounce-bottom', getRandomBottom());
+
+// Get the element
+var bouncer = document.getElementById('bouncer');
+// Set the initial value for bottom property
+bouncer.style.setProperty('--bounce-bottom', getRandomBottom());
+
+// Function to update the bottom property with a random value
+function updateBottomProperty() {
+  bouncer.style.setProperty('--bounce-bottom', getRandomBottom());
+}
+
+// Function to generate a random value for the bottom property
+function getRandomBottom() {
+  // Array of three possible values for bottom property
+  var bottoms = ['100px', '200px', '280px'];
+  // Randomly select one value from the array
+  return bottoms[Math.floor(Math.random() * bottoms.length)];
+}
+
+// Trigger the update every time the animation iteration ends
+bouncer.addEventListener('animationiteration', updateBottomProperty);
+
+
+
+//balltrail
+var ballTrail = document.getElementById('balltrail');
+var intervalID;
+
+document.getElementById('bouncer').addEventListener('animationstart', function() {
+  intervalID = setInterval(createTrail, 100); // Adjust the interval duration as needed
+});
+
+document.getElementById('bouncer').addEventListener('animationend', function() {
+  clearInterval(intervalID); // Clear the interval when the animation ends
+});
+
+function createTrail() {
+  var bouncer = document.getElementById('bouncer');
+  var bouncerRect = bouncer.getBoundingClientRect();
+
+  var spark = document.createElement('div');
+  spark.classList.add('spark', 'ball-trail-spark'); // Add both classes to the spark element
+  spark.style.left = (bouncerRect.left + bouncerRect.width / 2) + 'px'; // Center spark horizontally
+  spark.style.top = (bouncerRect.top + bouncerRect.height / 2) + 'px'; // Center spark vertically
+  ballTrail.appendChild(spark);
+
+  // Remove the spark element after a certain duration
+  setTimeout(function() {
+    spark.parentNode.removeChild(spark);
+  }, 1000); // Adjust the duration as needed
+}
+
+function updatePepePrice() {
+  fetch('https://api.coingecko.com/api/v3/simple/price?ids=pepe&vs_currencies=usd')
+      .then(response => response.json())
+      .then(data => {
+          const pepePrice = data.pepe.usd.toFixed(10); // Set the number of decimal places
+          document.getElementById('pepe-price').textContent = `$${pepePrice}`;
+      })
+      .catch(error => {
+          console.error('Error fetching Pepe price:', error);
+      });
+}
+
+// Initial update of the Pepe price
+updatePepePrice();
+setInterval(updatePepePrice, 10000); 
+
+  
+function updateTime() {
+    const currentTime = new Date();
+    const hours = currentTime.getHours().toString().padStart(2, '0');
+    const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+    const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+    const formattedTime = `${hours}:${minutes}:${seconds}`;
+    document.getElementById('current-time').textContent = formattedTime;
+}
+    updateTime();
+    setInterval(updateTime, 1000);
+
+
+
+      </script>
+    
   </body>
 </html>

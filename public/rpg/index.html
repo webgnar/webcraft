@@ -25,28 +25,32 @@
     <div id="mousesparks"></div>
     <audio id="random-sound-effect"></audio>
     <audio id="game-over-sound" src="https://opengameart.org/sites/default/files/snd_oh.mp3"></audio>
-    <audio id="cave-sound" src="https://opengameart.org/sites/default/files/magic_words.wav"></audio>
+    <audio id="cave-sound" src="https://opengameart.org/sites/default/files/lucky_lady.mp3"></audio>
     <audio id="buy-health" src="https://opengameart.org/sites/default/files/alien_jump_voice.wav"></audio>
     <audio id="buy-weapon" src="https://opengameart.org/sites/default/files/letsbuild.mp3"></audio>
-    <audio id="go-to-store" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
-    <audio id="go-to-town" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
-    <audio id="kill-monster" src="https://opengameart.org/sites/default/files/fuck.mp3"></audio>
-    <audio id="fight-slime" src="https://opengameart.org/sites/default/files/snd_frog_attack.mp3"></audio>
+    <audio id="go-to-store" src="https://opengameart.org/sites/default/files/b2b.mp3"></audio>
+    <audio id="go-to-town" src="https://opengameart.org/sites/default/files/shufflebeat.mp3"></audio>
+    <audio id="kill-monster" src="https://opengameart.org/sites/default/files/winfight.mp3"></audio>
+    <audio id="fight-slime" src="https://opengameart.org/sites/default/files/nown.mp3"></audio>
     <audio id="fight-beast" src="https://opengameart.org/sites/default/files/beast.mp3"></audio>
     <audio id="fight-artist" src="https://opengameart.org/sites/default/files/extra_life_sound_new.mp3"></audio>
-    <audio id="attack" src="https://opengameart.org/sites/default/files/electric_spark.mp3"></audio>
+    <audio id="attack" src="https://opengameart.org/sites/default/files/wub.mp3"></audio>
     <audio id="wiff" src="https://opengameart.org/sites/default/files/damn.mp3"></audio>
-    <audio id="dodge" src="https://opengameart.org/sites/default/files/jump_0.flac"></audio>
+    <audio id="dodge" src="https://opengameart.org/sites/default/files/ohsmoke.mp3"></audio>
     <audio id="coin" src="https://opengameart.org/sites/default/files/snd_pickupcoin.mp3"></audio>
     <audio id="lose" src="https://opengameart.org/sites/default/files/snd_oh.mp3"></audio>
-    
+
+   
+
     <div id="controls">
-      <button id="button1" class="button">Go to Store</button>
-      <button id="button2" class="button">Go into a Cave</button>
-      <button id="button3" class="button">Fight the Artist</button>
+      <button id="button1" class="button">Buy</button>
+      <button id="button2" class="button">Grow</button>
+      <button id="button3" class="button">Artist</button>
     </div>
     
     
+
+
   <div id="game">
       <div id="stats">
         <span class="stat" id="statXP">
@@ -91,7 +95,16 @@
     
       
 
-      
+      <div id="moving_rhoms">
+        <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKGZMkMgZPMGsfzn8yxDAF7UtRwxMKdjPoT6jMavmdp2GUAYGVxEu1XCfsVJG2x.gif">
+        <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3eEzT8L3b8y66rSUmrz2GXH3SkKq8A48cy7vsWcdTB2fzZtcRmcWVZ2p1ukjP.gif">
+        <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKGZMkMgZPMGsfzn8yxDAF7UtRwxMKdjPoT6jMavmdp2GUAYGVxEu1XCfsVJG2x.gif">
+        <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3eEzT8L3b8y66rSUmrz2GXH3SkKq8A48cy7vsWcdTB2fzZtcRmcWVZ2p1ukjP.gif">
+        <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKGZMkMgZPMGsfzn8yxDAF7UtRwxMKdjPoT6jMavmdp2GUAYGVxEu1XCfsVJG2x.gif">
+
+      </div>
+
+
 
     <div id="town-square" class="locationBackgrounds">
             <div id="sky">
@@ -100,10 +113,12 @@
                 <div class="cloud"></div>
             </div>
 
-            <div class="grinder">
-              <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3dxBkjgRHKnHjAortz5bKhCowY8KicU23biGusM7xQSCumuhG2kqkmN6uhi3a.gif" alt="Image 1" class="linepainting1">
-              <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJoHf2vGSxDtGQAMQVCtFYccC9beMJKbhS2LmT1L61agxUQk69JFnsMcwGmkZzc.gif" alt="Image 2" class="linepainting2">
-            </div>
+      <div id="movingshapes">
+        <div class="fourShapes" ></div>
+        <div class="fourShapes" ></div>
+        <div class="fourShapes" ></div>
+        <div class="fourShapes" ></div>
+      </div>
         
       <div id="scene">
         
@@ -116,13 +131,20 @@
       <div id = "anibottom1"></div>
     </div>
       
+
+
 </div>
 <div id="monsterStats">
-  <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
-  <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
+  <span class="stat">Painting: <strong><span id="monsterName"></span></strong></span>
+  <span class="stat">Areas that need finishing: <strong><span id="monsterHealth"></span></strong></span>
 </div>
 
-
+<div class="grinder">
+  <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3dxBkjgRHKnHjAortz5bKhCowY8KicU23biGusM7xQSCumuhG2kqkmN6uhi3a.gif" alt="Image 1" id="linepainting1">
+</div>
+<div class="grinder2">
+  <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJoHf2vGSxDtGQAMQVCtFYccC9beMJKbhS2LmT1L61agxUQk69JFnsMcwGmkZzc.gif" alt="Image 2" id="linepainting2">
+</div>
 
       <div id="text">
         Welcome to God Mode. You must defeat the artist that is preventing people from achieving spiritual enlightenment. You are at home on the couch. Where do you want to go? Use the buttons above.
