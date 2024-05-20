@@ -60,7 +60,7 @@ const locations = [
     name: "cave",
     "button text": ["Paint", "Code", "Skate"],
     "button functions": [fightSlime, fightBeast, goTown],
-    text: "You enter your mind. The walls are covered with paintings and life force codes to eternal existance. You see someone who looks like it hasnt read a book in a while. go in the sun for a while. You ponder if you should skate, paint or code."
+    text: "You enter your mind. The walls of your mind are covered with paintings and life force codes to eternal existance. You go sit in the sun for a while. You ponder if you should skate, paint or code."
   },
   {
     name: "fight",
