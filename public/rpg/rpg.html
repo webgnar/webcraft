@@ -5,6 +5,8 @@
     <style>
 
 
+
+
 body {
     background-color: #070748;
     box-sizing: border-box;
@@ -484,6 +486,7 @@ body {
   #town-square {
     background-color: lightblue;
     animation: pulsesky 2s infinite alternate;
+    border-radius: 0px 0px 0px 25px;
     
 }
 @keyframes pulsesky {
@@ -497,7 +500,7 @@ body {
   }
 }
 
-  }
+  
   
 
 
@@ -1115,13 +1118,16 @@ height: 30px;
   @keyframes bluesky {
     0% {
       transform: translateY(0);
+      border-radius: 0px 0px 0px 0px;
     }
     50% {
       transform: translateY(40px);
       background-color: rgb(0, 85, 255);
+      border-radius: 0px 0px 0px 50px;
     }
     100% {
       transform: translateY(0);
+      border-radius: 0px 0px 0px 0px;
     }
   }
   @keyframes cloud {
@@ -1162,6 +1168,7 @@ height: 30px;
         opacity:10%;
       }
 }
+
 
     </style>
     <title>God mode</title>
