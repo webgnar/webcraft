@@ -2,33 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./styles.css">
-    <title>God mode</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-<link href="https://fonts.googleapis.com/css2?family=Nova+Script&display=swap" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Nova+Script&display=swap" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Nova+Script&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Jaini+Purva&family=Jersey+25+Charted&family=Nova+Script&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-
-<style>
+    <style>
 
 
 body {
-    background-color: #0a0a23;
+    background-color: #070748;
     box-sizing: border-box;
-    
+    overflow-y: scroll;
   }
-
+  body::-webkit-scrollbar {
+    display: none; /* This hides the scrollbar in WebKit browsers */
+}
   .spark {
     position: absolute;
     width: 2px;
@@ -70,6 +54,7 @@ body {
     padding: 10px;
     background: linear-gradient(86deg,#a682ec,#561f9d,#a37624,#593e1c,#7a9e86,#3ac91f);
   background-size: 360% 360%;
+  border-radius: 20px 30px 5px 5px;
   animation: gradient-animation 30s ease infinite;
     z-index: 1;
   }
@@ -91,7 +76,7 @@ body {
   }
   
   #game {
-    position: relative; /* Add this line */
+    position: relative; 
     max-width: 500px;
     max-height: 400px;
     background-image: repeating-linear-gradient(var(--a), #0898ff, yellow 10vw);
@@ -100,9 +85,11 @@ body {
     animation-iteration-count: infinite;
     animation-duration: 30s;
     color: #ffffff;
-    margin: 30px auto 0px;
+    border-radius: 15px 50px 0px 0px;
+    margin: 20px auto 0px;
     padding: 10px;
     z-index: 2;
+    
   }
   @property --a {
     syntax: "<angle>";
@@ -119,11 +106,38 @@ body {
     }
   }
 
+  #slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* High z-index to ensure it's above all other elements */
+    pointer-events: none; /* Prevents the slideshow from capturing mouse events */
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    object-fit: cover; /* Ensures the image covers the entire div */
+}
+
+.visible {
+    opacity: 1;
+}
+
 
   #stats {
   
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px solid rgb(255, 230, 0);
+    
+    padding: 4px;
+    padding-bottom: 0px;
     color: #000000;
     
     background-image: radial-gradient(circle farthest-corner at var(--c) var(--d), yellow 0.5em, var(--e) 2.5em);
@@ -134,6 +148,7 @@ body {
     animation-duration: 10s;
     font-size: 1.6em;
     display: flex;
+    border-radius: 15px 50px 00px 0px;
     justify-content: space-around;
     font-family: "Jersey 15", sans-serif;
     font-weight: 400;
@@ -169,21 +184,21 @@ body {
       --e: midnightblue;
       color: antiquewhite;
       text-shadow: 5px 1px #000000;
-      border: 1px solid white;
+      border: 1px solid rgb(255, 230, 0);
     }
     50% {
       --d: 20%;
       --e: lightblue; 
       color: rgb(1, 20, 115);
       text-shadow: 1px 2px #000000;
-      border: 1px solid black;
+      border: 1px solid rgb(71, 62, 139);
     }
     to {
       --c: 100%;
       --d: 100%;
       color: antiquewhite;
       text-shadow: -5px 1px #000000;
-      border: 1px solid white;
+      border: 1px solid rgb(255, 230, 0);
     }
   }
 
@@ -236,7 +251,10 @@ body {
  .stat span{
     cursor:ne-resize;
  }
-
+.stat img{
+  padding-top: 5px;
+  
+}
 
  .material-symbols-outlined{
   vertical-align: middle;
@@ -292,30 +310,32 @@ body {
 
 #radio-slider {
   background-color: darkblue;
-  border-radius: 50%;
+  border-radius: 50px;
+  
 }
 
 .slider {
-  -webkit-appearance: none; /* Remove default styles for WebKit browsers */
-  appearance: none; /* Remove default styles for non-WebKit browsers */
-  width: 100%; /* Set width of the slider */
-  height: 10px; /* Set height of the slider */
-  background: #ddd; /* Set background color of the slider track */
-  border-radius: 5px; /* Set border radius to make it rounded */
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set initial opacity of the slider */
-  transition: opacity 0.2s; /* Add transition effect for opacity */
+  -webkit-appearance: none; 
+  appearance: none; 
+  width: 100%; 
+  height: 10px; 
+  background: #ff0077; 
+  border-radius: 5px; 
+  outline: none; 
+  opacity: 0.6; 
+  transition: opacity 0.2s; 
 }
 
-/* Customize slider thumb */
+
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Remove default styles for WebKit browsers */
   appearance: none; /* Remove default styles for non-WebKit browsers */
   width: 20px; /* Set width of the thumb */
-  height: 20px; /* Set height of the thumb */
-  background: #4800ff; /* Set background color of the thumb */
-  border-radius: 50%; /* Set border radius to make it circular */
-  cursor: ew-resize; /* Change cursor to pointer */
+  height: 30px; /* Set height of the thumb */
+  background: #ff009d; 
+  border: 1px solid lime;/* Set background color of the thumb */
+  border-radius: 1px; /* Set border radius to make it circular */
+  cursor: grab; /* Change cursor to pointer */
 }
 
 /* Add hover effect to the slider */
@@ -344,7 +364,7 @@ body {
     left: 280px;
     justify-content: space-around;
     padding: 20px;
-    border-radius: 15%;
+    border-radius: 2px 40px 2px 40px;
     background-image: repeating-linear-gradient(var(--a), #000000, rgb(255, 0, 30) 2vw);
     animation-name: bgrotate2;
     animation-direction: alternate;
@@ -463,6 +483,20 @@ body {
   }
   #town-square {
     background-color: lightblue;
+    animation: pulsesky 2s infinite alternate;
+    
+}
+@keyframes pulsesky {
+  0% {
+      background-color: rgb(153, 231, 255);
+      
+  }
+  100% {
+      background-color: #74f6ff; 
+      
+  }
+}
+
   }
   
 
@@ -561,6 +595,70 @@ height: 30px;
         transform: scale(0.1);
     }
 }
+
+.shuffle-container {
+  position: relative;
+  top:-280px;
+  left: 100px;
+  width: 150px; 
+  height: 150px; 
+  cursor: pointer;
+  animation: moveLeftAndRight 60s linear infinite;
+}
+
+
+.shuffle-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; 
+}
+
+@keyframes moveLeftAndRight {
+  0% {
+    left: 100px; /* Original position */
+  }
+  10%{
+    left: 20px;
+    top: -250px;
+  }
+  20% {
+    top: -30px; 
+    left: 10px;
+
+  }
+  30%{
+    left: 200px;
+    top:-50px;
+  }
+  40%{
+    left: 350px;
+    top:-10px;
+  }
+  50% {
+    left: 200px;
+    top:-70px; 
+  }
+  60%{
+    left: 350px
+  }
+  70% {
+    left: 200px; 
+  }
+  80%{
+    left:300px;
+  }
+  90%{
+    left:200px;
+    top:-360px;
+  }
+  100% {
+    left: 100px; /* Move back to the original position */
+  }
+}
+
 
 .grinder {
   position:absolute;
@@ -688,7 +786,7 @@ height: 30px;
   transform-origin: center;
 }
 .weapon-image:hover {
-  transform: rotateZ(360deg); /* Rotate the image 360 degrees on hover */
+  
 }
 #earth{
   position:absolute;
@@ -735,15 +833,34 @@ height: 30px;
 }
 
   #bottombox{
-    background-color: transparent;
+    
     width: 500px;
     height: 180px;
     z-index: 5;
-    margin: 10px auto 5px;
+    margin: auto;
+    padding-top: 4px;
     z-index: 100;
-
-    
+    border-top: 50px solid red;
+    border-left: 10px solid white;
+    border-right: 10px solid white;
+    border-bottom: 5px solid rgb(25, 0, 255);
+    animation: pulseBackground2 1s infinite alternate;
   }
+  @keyframes pulseBackground2 {
+    0% {
+        background-color: rgb(255, 213, 155);
+        border-top: 2px solid rgb(182, 255, 175);
+        border-left: 10px solid rgb(255, 255, 237);
+        border-right: 10px solid rgb(255, 249, 234);
+    }
+    100% {
+        background-color: #bda2ff; 
+        border-top: 2px solid rgb(255, 171, 171);
+        border-left: 10px solid rgb(117, 117, 106);
+        border-right: 10px solid rgb(137, 134, 125);
+    }
+  }
+
 
   #crypto-container {
     position: relative;
@@ -751,12 +868,16 @@ height: 30px;
 }
 
 #crypto-prices {
-  position: absolute;
-  top: 5px; /* Adjust this value as needed to move the prices div up */
+  position: relative;
+  width: 140px;
+  height: 25px;
+  top: 6px; 
   left: 0;
   display: flex;
+  flex-direction: flex-end;
   align-items: center;
   background-color: black;
+  
   color: lime;
   border: 1px solid lime;
   border-radius: 5px;
@@ -768,20 +889,32 @@ height: 30px;
       background-color: black;
   }
   100% {
-      background-color: #333; /* Gray color */
+      background-color: #333; 
   }
 }
 
-.pepe-logo {
-  width: 30px;
-  height: 30px;
+.zackface {
+  position: absolute;
+  width: 25px;
+  height: 25px;
   margin-right: 10px;
+  padding-left: 3px;
+  transition: opacity 0.5s ease-in-out;
+}
+#zackface2{
+  opacity: 0;
+  z-index: 2;
+}
+#zackface2.visible {
+  opacity: 1;
 }
 
+
 .pepe-price {
-    font-size: 18px;
-    margin: 0; /* Remove default margins */
+    font-size: 14px;
+    margin: 0; 
     padding-right: 10px;
+    padding-left: 38px;
     font-family: "Share Tech Mono", monospace;
 }
 
@@ -796,13 +929,13 @@ height: 30px;
   display: flex;
   align-items: center;
   background-color: black;
-  color: lime;
+  color: rgb(255, 221, 0);
   border: 1px solid lime;
   border-radius: 5px;
   font-family: "Share Tech Mono", monospace;
   z-index: 1;
   animation: pulseBackground 0.1s infinite alternate;
-  cursor: url(https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23u677C5aFQJ5ZeHcXfPLPCkeHmCQBj47jQW3faVmpc164qy9f6PE67Urx8tQca297y3G.gif),auto;
+  cursor: url(https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKAqPg2upQFU4FYsKYzATm7QTJpagJPJ9zBm4sG7Dm7bp5eq1fpakyN5RH6n3jL.PNG),auto;
 }
 .time-clock{
   margin-right: 5px;
@@ -938,7 +1071,7 @@ height: 30px;
     border: 2px solid rgb(0, 144, 43);
     border-radius: 10px;
     background: rgb(0, 0, 252);
-    z-index: 2;
+    z-index: 3;
     background: -webkit-radial-gradient(60% 40%, circle, rgba(26, 255, 0, 0.8), rgb(140, 0, 255) 50%) red;
     background: -moz-radial-gradient(60% 40%, circle, rgba(255,255,255,0.8), rgb(98, 255, 0) 50%) red;
     background: -o-radial-gradient(60% 40%, circle, rgba(255, 255, 255, 0.8), red 50%) red;
@@ -957,8 +1090,8 @@ height: 30px;
   }
 
   :root {
-    --random-min: 180; /* Minimum value */
-    --random-max: 220; /* Maximum value */
+    --random-min: 180; 
+    --random-max: 220; 
     --bounce-bottom: calc(var(--random-min)px + (var(--random-max) - var(--random-min)) * random());
   }
 
@@ -969,11 +1102,13 @@ height: 30px;
     width: 100%;
     height: 100%;
     pointer-events: none;
+    z-index: 2;
   }
   .ball-trail-spark {
-    width: 16px; /* Adjust the width of the ball trail spark */
-    height: 6px; /* Adjust the height of the ball trail spark */
-    background-color: rgba(0, 255, 251, 0.5); /* Adjust the color and opacity of the ball trail spark */
+    width: 16px; 
+    height: 6px; 
+    background-color: rgba(0, 255, 251, 0.5); 
+    
   }
 
 
@@ -982,7 +1117,7 @@ height: 30px;
       transform: translateY(0);
     }
     50% {
-      transform: translateY(20px);
+      transform: translateY(40px);
       background-color: rgb(0, 85, 255);
     }
     100% {
@@ -1028,29 +1163,60 @@ height: 30px;
       }
 }
 
-</style>
+    </style>
+    <title>God mode</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<link href="https://fonts.googleapis.com/css2?family=Nova+Script&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Nova+Script&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Nova+Script&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Jaini+Purva&family=Jersey+25+Charted&family=Nova+Script&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
   </head>
   <body>
     <div id="mousesparks"></div>
     <audio id="random-sound-effect"></audio>
     <audio id="game-over-sound" src="https://opengameart.org/sites/default/files/snd_oh.mp3"></audio>
-    <audio id="cave-sound" src="https://opengameart.org/sites/default/files/magic_words.wav"></audio>
+    <audio id="cave-sound" src="https://opengameart.org/sites/default/files/lladyfin.mp3"></audio>
     <audio id="buy-health" src="https://opengameart.org/sites/default/files/alien_jump_voice.wav"></audio>
     <audio id="buy-weapon" src="https://opengameart.org/sites/default/files/letsbuild.mp3"></audio>
-    <audio id="go-to-store" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
-    <audio id="go-to-town" src="https://opengameart.org/sites/default/files/Decline.wav"></audio>
-    <audio id="kill-monster" src="https://opengameart.org/sites/default/files/fuck.mp3"></audio>
-    <audio id="fight-slime" src="https://opengameart.org/sites/default/files/snd_frog_attack.mp3"></audio>
-    <audio id="fight-beast" src="https://opengameart.org/sites/default/files/beast.mp3"></audio>
+    <audio id="go-to-store" src="https://opengameart.org/sites/default/files/b2b_short.mp3"></audio>
+    <audio id="go-to-town" src="https://opengameart.org/sites/default/files/shufflebeat.mp3"></audio>
+    <audio id="kill-monster" src="https://opengameart.org/sites/default/files/winfight.mp3"></audio>
+    <audio id="fight-slime" src="https://opengameart.org/sites/default/files/nown.mp3"></audio>
+    <audio id="fight-beast" src="https://opengameart.org/sites/default/files/rev.mp3"></audio>
     <audio id="fight-artist" src="https://opengameart.org/sites/default/files/extra_life_sound_new.mp3"></audio>
-    <audio id="attack" src="https://opengameart.org/sites/default/files/electric_spark.mp3"></audio>
+    <audio id="attack" src="https://opengameart.org/sites/default/files/tada.mp3"></audio>
     <audio id="wiff" src="https://opengameart.org/sites/default/files/damn.mp3"></audio>
-    <audio id="dodge" src="https://opengameart.org/sites/default/files/jump_0.flac"></audio>
+    <audio id="dodge" src="https://opengameart.org/sites/default/files/ohsmoke2.mp3"></audio>
     <audio id="coin" src="https://opengameart.org/sites/default/files/snd_pickupcoin.mp3"></audio>
     <audio id="lose" src="https://opengameart.org/sites/default/files/snd_oh.mp3"></audio>
 
-   
+    <div id="slideshow">
+      <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23vhVwPrSfi8iodj5XpyWGE6N9CUkNNewdF12pumhN87N9eXpZpwB8mFjX52S8jFuey7n.PNG" class="slide visible">
+      
+      <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23x14cRRh66wy8wFhwP9KWHk8RjnWUYzUKSsyVRVK4WX6N6mCxfW4hUum49xoHwYyvCqe.PNG" class="slide">
+      
+      
+      <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23wMMzFDRFMohFVoAuus35HYnvkwysWzssCvPXb1hKy4okbF25ryxeor8SjhhsB1Gpkof.PNG" class="slide">
+
+      <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23xeUzP5UXhgsfV9wWRGEc3uyxMVc8Ehj5SfdacppvYtDaBhX9RukavRoCA5MCmUFGexY.PNG" class="slide">
+      <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23wX5r7iSakcnTLVEBXZLj9tmmEFFNXKBvjWTUoNHWX2P4gE7T8L4M56c3JnGG2LKPQWx.PNG" class="slide">
+      <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23xyNrvaUPaaKLApzqnHUP8GD4PDKe8hJXtq1yu5BLQgWJPBYRbmKqZ3m4W9XuwTzuPuJ.PNG" class="slide">
+      
+      
+      <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23vsWuHALPkkYJBBK3KdS1KLodx8d73uTHLT838edkaPVjpjN1aYDhKU5AsxVPv5Mvt4M.PNG" class="slide">
+      <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23vhww6fo2aLN95zUyL5UJiz8ZNHv7JvvuYY7vpYoBM9VuijwD3CEiNxehKz2VLv2yUJC.png" class="slide">
+  </div>
 
     <div id="controls">
       <button id="button1" class="button">Buy</button>
@@ -1064,13 +1230,13 @@ height: 30px;
   <div id="game">
       <div id="stats">
         <span class="stat" id="statXP">
-                &#129516 XP: <strong><span id="xpText">0</span></strong>
+                <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKHzh3SZe3yPriagxHYhbfY9phWZJ87CTe1YWTMb7LbfPPRmk3i3fpi6ceEGM4o.PNG"> EXP: <strong><span id="xpText">0</span></strong>
             </span>
         <span class="stat" id="statHealth">
-            &#129385 Health: <strong><span id="healthText">100</span></strong>
+            <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKAqPg2upQFU4FYsKYzATm7QTJpagJPJ9zBm4sG7Dm7bp5eq1fpakyN5RH6n3jL.PNG"> Life: <strong><span id="healthText">100</span></strong>
         </span>
 
-        <span class="stat" id="statGold">&#128184 Gold: <strong><span id="goldText">50</span></strong></span>
+        <span class="stat" id="statGold"><img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK4zdxvfKspCbuSC2XRUGv5keYoNpdFZvNTegP5PmkURK1xFDTwpD6MtyX9TTJL.PNG"> Gold: <strong><span id="goldText">50</span></strong></span>
 
       </div>
       
@@ -1141,7 +1307,9 @@ height: 30px;
       <div id = "anibottom1"></div>
     </div>
       
-
+    <div id="shuffle-container" class="shuffle-container">
+      
+  </div>
 
 </div>
 <div id="monsterStats">
@@ -1157,7 +1325,7 @@ height: 30px;
 </div>
 
       <div id="text">
-        Welcome to God Mode. You must defeat the artist that is preventing people from achieving spiritual enlightenment. You are at home on the couch. Where do you want to go? Use the buttons above.
+        Welcome to God Mode. You must defeat the artist that is preventing people from achieving inner peace. You are at home on the couch. Where do you want to go? Use the buttons above.
       </div>
 
       
@@ -1182,7 +1350,8 @@ height: 30px;
       <div id="bg-honeycomb">
         <div id="crypto-container">
           <div id="crypto-prices">
-              <img src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/EoGqh59VuD8CC52scAPbNfhxddX17D499PWo4ZQ9tqmJ87CTBgmkvysMyXdDpz3FUHN.gif" alt="Pepe Logo" class="pepe-logo">
+              <img  id = "zackface1" src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK2D4teR8kJ9UjSMBMRqTz5m9us7fk3jUCrZVmJ2yu8in6T8sWsthUK1wbLvnxp.png" alt="zack face" class="zackface">
+              <img  id = "zackface2" src="https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKU3uEntJBgdgGSTnq7kf5i7Y7vGaXCo1dxTDAvnGpgzeMGKwHyQWTtknnUR6Ae.png" alt="zack face 2" class="zackface">
               <p class="pepe-price" id="pepe-price"></p>
           </div>
       </div>
@@ -1242,7 +1411,7 @@ const monsters = [
     health: 15
   },
   {
-    name: "textured beast",
+    name: "video game",
     level: 8,
     health: 60
   },
@@ -1256,13 +1425,13 @@ const monsters = [
 const locations = [
   {
     name: "town square",
-    "button text": ["Store", "Train", "Artist"],
+    "button text": ["Shop", "Build", "Artist"],
     "button functions": [goStore, goCave, fightDragon],
-    text: "You are in the town Plaza. Lots of people walking around in a hypnotized daze. You want nothing to do with any of them. You are on a mission. Focus. You see a sign that says \"Store\"."
+    text: "You are in the town Plaza. Lots of spots to skate and people walking around in a hypnotized daze, buying things. You are on a mission. Focus. You see a sign that says \"Store\"."
   },
   {
     name: "store",
-    "button text": ["food", "Stimulant", "go Outside"],
+    "button text": ["Health", "Upgrade", "go Outside"],
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "You enter the store. You see a bunch of weird stuff for sale. There is only one thing that can help you fight evil, and thats coffee or tea. You also see some unprocessed food from a small organic farm nearby."
   },
@@ -1270,32 +1439,32 @@ const locations = [
     name: "cave",
     "button text": ["Paint", "Code", "Skate"],
     "button functions": [fightSlime, fightBeast, goTown],
-    text: "You enter your mind. The walls are covered with paintings and life force codes to eternal existance. You see someone who looks like it hasnt read a book in a while. go in the sun for a while. You ponder if you should skate, paint or code."
+    text: "You enter your mind. The walls of your mind are covered with paintings and life force codes to eternal existance. You go sit in the sun for a while. You ponder if you should skate, paint or code."
   },
   {
     name: "fight",
     "button text": ["Engage", "Smoke", "Quit"],
     "button functions": [attack, dodge, goTown],
-    text: "You havent painted in months. You arnt even sure if you know how to paint anymore. Go ahead, smoke another cig and think about why you haven't been as productive as you want to be."
+    text: "You havent painted in months. You arnt even sure if you know how to paint anymore. Go ahead, smoke another cig and think about why you haven't been as productive as you want to be. The best time to start is yesterday."
   },
   {
     name: "kill monster",
     "button text": ["Go to Plaza", "Go to Plaza", "Go Skate"],
     "button functions": [goTown, goTown, goTown],
-    text: 'The monster screams "Faaaaack!" as it dies. You gain experience points and find some gold in the air.'
+    text: 'The painting yells "yoohoo!" as it resonates with the human eye in perfect harmony. You gain experience, joy, and a feeling of gratitude for just being alive. You hope this painting gets out to the world and makes it a better place. Stay gold.'
     
   },
   {
     name: "lose",
     "button text": ["Earth?", "Earth?", "Earth?"],
     "button functions": [restart, restart, restart],
-    text: "You died. &#x2620; You did not build up enough motivation to complete the painting. The earth will move forward without you now. Look forward to reincarnating on a planet similar to earth 40 years from now, or give it another go here on earth."
+    text: "You died. &#x2620; You did not build up enough motivation to finish the art. The earth will move forward without you now. Look forward to reincarnating on a planet similar to earth 40 years from now, or give it another go here on earth."
   },
   { 
     name: "win", 
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"], 
     "button functions": [restart, restart, restart], 
-    text: "You defeated the Master Artist Zack Goulet! YOU WIN THE GAME! &#x1F389; YOU ARE GOATED" 
+    text: "You defeated the web-gnar of Zack Goulet! YOU WIN THE GAME! &#x1F389; YOU ARE GOATED" 
   },
   {
     name: "easter egg",
@@ -1339,7 +1508,7 @@ function update(location) {
       break;
 
       case "kill monster":
-        document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKKRrVKntmmY6QVsqU2GySGTDShDf3DKN5sbLrLP14wdHA2539UBj9VyZouDF71.gif')";
+        document.getElementById('imageChanger').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJmrPZEznTyMg4aCRJKKezYFuacch14D4VRR3h8NFVNkbyAnujFoc3qHnD7HkSG.gif')";
         document.getElementById('imageChangerBottom').style.backgroundImage = "url('https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23tkZTu2P3KA6qbLivLBfWNQAK4hA31RgE8YeRGfGBZ6BF7PMxb8meLXRFxgNjsjHFatJ.gif')";
         playLocationSound("kill-monster");
         break;
@@ -1427,7 +1596,7 @@ function buyWeapon() {
       playLocationSound("buy-weapon");
       updateWeapon();
     } else {
-      text.innerText = "You do not have enough gold to buy a the stuff you need to succeed.";
+      text.innerText = "You do not have enough gold to upgrade your wellbeing in that way. You must train in the arts of Painting, Code, and Skating to procure imaginary Gold.";
       playLocationSound("wiff"); 
     }
   } else {
@@ -1482,7 +1651,7 @@ function attack() {
     monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1; 
     playLocationSound("attack");   
   } else {
-    text.innerText += " You hesitated, got distracted, and missed the mark. The Universe doubts your abilities. Now you are scared for your future.";
+    text.innerText += " You hesitated, got distracted, and missed the mark. The Universe doubts your abilities. Now, you are worried.";
     playLocationSound("wiff");   
   }
   healthText.innerText = health;
@@ -1515,6 +1684,7 @@ function isMonsterHit() {
 
 function dodge() {
   text.innerText = "You cant stop thinking about the  " + monsters[fighting].name + ". You begin to feel a mix of overstimulated exhaustion. You try to admire nature, but your mind wont stop revolving around this " + monsters[fighting].name + " thing.";
+  health -= 1;
   playLocationSound("dodge");
 }
 
@@ -1866,7 +2036,98 @@ function updateTime() {
     setInterval(updateTime, 1000);
 
 
+    document.getElementById('crypto-prices').addEventListener('click', function() {
+      const zackface2 = document.getElementById('zackface2');
+  
+      if (zackface2.classList.contains('visible')) {
+        zackface2.classList.remove('visible');
+      } else {
+        zackface2.classList.add('visible');
+      }
+  });
 
+  document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showNextSlide() {
+        slides[currentSlide].classList.remove('visible');
+        
+        let nextSlide;
+        do {
+            nextSlide = Math.floor(Math.random() * slides.length);
+        } while (nextSlide === currentSlide);
+
+        currentSlide = nextSlide;
+        slides[currentSlide].classList.add('visible');
+    }
+
+    setInterval(showNextSlide, 600); // Change image every 1625 ms
+});
+
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+  const shuffContainer = document.getElementById('shuffle-container');
+
+  const layers = [
+      ['https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKVV8SQX79SsFkPVRnKahNcHmnLc6w9zMSwkW6TCVi1dBcjQAUGuwXcUfFvMxQJ.png',
+       'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3gFjxckmhn5mBN5SF5y4QqLyrMUUvwHm7YxjjxZTu2uQ4Vhj5GCwGVfcPPSGV.png',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKe7WKjjggw3qf69JpmVJEZtmnEX8eAXXhowp2YxZUMs45o2qk3pm3nwUdrBtwT.png',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKF89ZVKkV9SA6D9hCyvQpjxe8ZMUAQ424tbkV4feeJ1k1vdKAFg1cKgRnFMiDW.png'
+      ],
+      ['https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK54FEoftXWqGKh9WimtHEvAcfVKKcVt2KKmet63gTyaUByXQUZdMopqnCQwTHV.png',
+       'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKU22oRQajzATrmymAnz63ZsWmYCqqdDhTgU5RB4wJcFEcYzccCCFQRvuFj1R9e.png',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK9JweYG73XWMvkbpSNEdM8fK9EBL9J5nF4vFG2Y5HvFdUZiLiP6JfZPKhsTNen.png',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKLt3PHujGNKSEK81PrcivzMNAyvm5CWj8zMdGrN4whm5zfQVge16DFbi3kkLRq.png'
+      ],
+      [
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23xAY7x84FuBB295MocG7qirTgJJvo7sV8hzZZXXpENZTo8Td5wR3Xbo8rjTkbEd1EuYT.PNG',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23xVXXSoZtxv7425MGn7FdvqHgNWYN6dVDJpGJFgZ6C2BU1ANT49fQQDR5MNLyxHyeuDb.PNG',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23vsWuHALPkkYJBBK3KdS1KLodx8d73uTHLT838edkaPVjpjN1aYDhKU5AsxVPv5Mvt4M.PNG',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23xyNrvaUPaaKLApzqnHUP8GD4PDKe8hJXtq1yu5BLQgWJPBYRbmKqZ3m4W9XuwTzuPuJ.PNG',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23yJ7rgnuh8KHh6EJmDB9LWo7XuWTaziETrcgcMQSz9oXixor3JY3pruKyeFvqrMDpMGc.PNG',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23yTfQtTqgULQrKVbs9xdN79Vq1UZm4cCo3VnaQsD9b1ESPC3gL4JishWeoBLcQvVYTaT.PNG',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/23vhwZXnCqZa9z7wVB3ULV9hiBwDK21rKYBMRu2nnqV2hdzzvdTVVr6BHftiUujLs4VVf.PNG'
+
+      
+      ],
+      [
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJhUo4efZ6z5a4EDCtRYwBhpdZRMGf5C2AUKNgBYuTegfp75kHc3dDjBgYbn1Dq.png',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AK3dvvoaXYnVenBp3uJhei8aWXNdhx4Ctbh9obHSDiM2ynRMD9Yp4sYWQqTagpD.png',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKNDmqzwfwWv654QrKLA2wd2tZqcwYR4XiZBHTHi1J8wz9ss2XLXMNhukPENoFf.png',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKSc4jtcgoFUg3PN1orePfqvpWdJAFPBgW4gSKdYrStfgm1cKXcHbCNrkiasJZ1.png',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKb9CWBwETMPuvqJp85AE6G6fhGYSpp9CGpaZpSt9nALmFFYg98DGreuXQTUaNS.png'
+      ],
+      ['https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJbhBb9Ev3i1cHKtjoxtsCAaXK9njP56dzMwBRwfZVZ21WseKsCa6Za7kL8P6EH.png',
+       'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJbhBb9Ev3i1cHKtjoxtsCAaXK9njP56dzMwBRwfZVZ21WseKsCa6ZkhfN6CfF8.png',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJbhCGcViVSiKr1kP6uS8DAbaQ2LnL4YKggTz3GdqSKwLmuaj8B4ddrw8uKU5rc.png',
+        'https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AJbhFMUUphkn9AUhSwnz9jtr5uop9gjciAcBsRQxHoqhhgM21ng66e7fXiriTTK.png'
+      ]
+  ];
+
+  // Initialize the container with the first image of each layer
+  layers.forEach((layer, index) => {
+      const img = document.createElement('img');
+      const randomIndex = Math.floor(Math.random() * layer.length);
+      img.src = layer[randomIndex];
+      img.dataset.layerIndex = index;
+      img.style.zIndex = index;
+      img.style.display = 'block'; // Show the image
+      shuffContainer.appendChild(img);
+  });
+
+  // Function to get a random index for an array
+  const getRandomIndex = (array) => Math.floor(Math.random() * array.length);
+
+  // Shuffle images on click
+  shuffContainer.addEventListener('click', () => {
+      layers.forEach((layer, layerIndex) => {
+          const shuffimages = shuffContainer.querySelectorAll(`img[data-layer-index="${layerIndex}"]`);
+          const randomIndex = getRandomIndex(layer);
+          shuffimages[0].src = layer[randomIndex];
+      });
+  });
+});
       </script>
     
   </body>

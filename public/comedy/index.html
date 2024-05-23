@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<head>
+<link rel="stylesheet" href="styles.css">
+<html lang = "en">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="styles.css">
+<title>Register for Open Mic</title>
+</head>
+
+<body>
+<h1 id="register"> <em>Sign up </em> </h1><h1 id="for"> for</h1> <h1 id="openmicnight">Open Mic Night</h1>
+
+<p id="location"><span class="cursivespan">at</span> Terminal Bar </p>
+<p id="description"><span class="cursivespan">in</span> NE Minneapolis</p>
+<p id="micpic">🎤</p>
+
+
+<fieldset>
+    <section>
+<form method="post" action='https://register-demo.freecodecamp.org' id="survey-form">
+  
+<label for="name" id="name-label">Enter your name:</label>
+<input id="name" type="text" placeholder="Name" required>
+
+<label for="email" id="email-label">Enter your email:</label>
+<input id="email" type="email" placeholder="Email address" required>
+
+<label for="phone" id="phone-label">Enter your phone number:</label>
+<input id="phone" type="tel" placeholder="Phone number" min="1" max="11">
+
+</section>
+
+<section id="section2">
+<label id="preferences" name="dropdown" for="dropdown">Preferences
+<select id="dropdown">
+  <option disabled selected>Time 🕓 </option>
+  <option value="1">5:00</option>
+  <option value="2">5:30</option>
+  <option value="3">6:00</option>
+  <option value="4">6:30</option>
+  <option value="5">7:00</option>
+  <option value="6">7:30</option>
+  <option value="7">8:00</option>
+  <option value="8">8:30</option>
+  <option value="9">9:00</option>
+</select>
+</label>
+
+
+ <label for="orlater">
+    <input  id="orlater" class="inline" type="radio" name="buttons" value="text">First timer
+ </label>
+
+ <label for="orearly">
+<input  id="orearly" class="inline" type="radio" name="buttons" value="text">Done this before
+</label>
+
+<label for="checkbox">I'm flexible with my timeslot
+  <input class="inline" id="checkbox" type="checkbox" value="text">
+</label>
+
+<label for="mailinglist">Recieve weekly emails?
+  <input class="inline" id="mailinglist" type="checkbox" value="text">
+</label>
+</section>
+
+<section id="section3">
+<textarea placeholder="Any other info you would like to add"></textarea>
+<input class="signup" type="submit" value="Sign Up">
+
+</section>
+</fieldset>
+
+</form>
+
+</body>
+
+<footer>
+  gnar studio
+</footer>
+</html>
