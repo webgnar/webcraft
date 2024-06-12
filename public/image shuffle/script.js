@@ -1,6 +1,6 @@
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
-    const imageContainer = document.getElementById('image-container');
+    const shuffContainer = document.getElementById('shuffle-container');
 
     const layers = [
         ['https://images.hive.blog/0x0/https://files.peakd.com/file/peakd-hive/web-gnar/AKVV8SQX79SsFkPVRnKahNcHmnLc6w9zMSwkW6TCVi1dBcjQAUGuwXcUfFvMxQJ.png',
@@ -28,18 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
         img.dataset.layerIndex = index;
         img.style.zIndex = index;
         img.style.display = 'block'; // Show the image
-        imageContainer.appendChild(img);
+        shuffContainer.appendChild(img);
     });
 
     // Function to get a random index for an array
     const getRandomIndex = (array) => Math.floor(Math.random() * array.length);
 
     // Shuffle images on click
-    imageContainer.addEventListener('click', () => {
+    shuffContainer.addEventListener('click', () => {
         layers.forEach((layer, layerIndex) => {
-            const images = imageContainer.querySelectorAll(`img[data-layer-index="${layerIndex}"]`);
+            const shuffimages = shuffContainer.querySelectorAll(`img[data-layer-index="${layerIndex}"]`);
             const randomIndex = getRandomIndex(layer);
-            images[0].src = layer[randomIndex];
+            shuffimages[0].src = layer[randomIndex];
         });
     });
 });

@@ -8,14 +8,14 @@ body {
     background-color: #f0f0f0;
 }
 
-.image-container {
+.shuffle-container {
     position: relative;
     width: 300px; 
     height: 300px; 
     cursor: pointer;
 }
 
-.image-container img {
+.shuffle-container img {
     position: absolute;
     top: 0;
     left: 0;
