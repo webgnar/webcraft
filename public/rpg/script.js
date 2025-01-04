@@ -748,26 +748,4 @@ document.addEventListener('DOMContentLoaded', () => {
           shuffimages[0].src = layer[randomIndex];
       });
   });
-
-  const volumeSlider = document.getElementById('volumeSlider');
-
-// When the slider value changes
-volumeSlider.addEventListener('input', function() {
-    // Get all audio elements on the page
-    const audioElements = document.getElementsByTagName('audio');
-    
-    // Loop through each audio element to adjust its volume
-    for (let audio of audioElements) {
-        audio.volume = this.value; // 'this.value' is the current value of the slider
-    }
-});
-
-// Initial setting for all audio elements
-const audioElements = document.getElementsByTagName('audio');
-for (let audio of audioElements) {
-    audio.volume = volumeSlider.value; // Set initial volume to slider's initial value (1)
-}
-
-
-
 });

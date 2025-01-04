@@ -8,48 +8,6 @@ body {
   body::-webkit-scrollbar {
     display: none; /* This hides the scrollbar in WebKit browsers */
 }
-
-#volumeControl {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1000;
-  width: 100px; /* Width of the slider container */
-}
-
-#volumeSlider {
-  -webkit-appearance: none;  /* Override default look */
-  appearance: none;
-  width: 100%; /* Full-width */
-  height: 15px; /* Specified height */
-  background: #000000; /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-  transition: opacity .2s;
-}
-
-#volumeSlider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
-}
-
-#volumeSlider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #4CAF50; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-  border-radius: 50%; /* Make the handle circular */
-}
-
-#volumeSlider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #4CAF50; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-
   .spark {
     position: absolute;
     width: 2px;
