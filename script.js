@@ -489,7 +489,10 @@ const radioPlayers = [
   document.getElementById('radioPlayer1'),
   document.getElementById('radioPlayer2'),
   document.getElementById('radioPlayer3'),
-  document.getElementById('radioPlayer4')
+  document.getElementById('radioPlayer4'),
+  document.getElementById('radioPlayer5'),
+  document.getElementById('radioPlayer6'),
+  document.getElementById('radioPlayer7')
 ];
 
 stationSlider.addEventListener('input', function() {
